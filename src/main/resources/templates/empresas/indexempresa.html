@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css"href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title th:text="${titulo}">titulo</title>
+</head>
+<body>
+<div class="container">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${titulo}"
+                style="text-align: center;">Card title</h5>
+
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Cuit</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Direcci&oacute;n</th>
+                    <th scope="col">C&oacute;digo Postal</th>
+                    <th scope="col">Ciudad</th>
+                    <th scope="col">Provincia</th>
+                    <th scope="col">Pais</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <th:block th:each="empresa : ${data.content}">
+
+                    <tr>
+                        <th th:text="${empresa.id}">1</th>
+                        <td th:text="${empresa.cuit}">Mark</td>
+                        <td th:text="${empresa.nombre}">Otto</td>
+                        <td th:text="${empresa.direccion}">Otto</td>
+                        <th th:text="${empresa.codigoPostal}"></th>
+                        <td th:text="${empresa.ciudad}">@mdo</td>
+                        <td th:text="${empresa.provincia}">@mdo</td>
+                        <td th:text="${empresa.pais}">@mdo</td>
+                    </tr>
+
+                </th:block>
+                </tbody>
+            </table>
+
+
+            <nav th:if="${data.totalPages > 0}" aria-label="navigation">
+                <ul class="pagination justify-content-center">
+
+                    <th:block th:if="${data.hasPrevious()}">
+                        <li class="page-item"><a class="page-link"
+                                                 th:href="@{/empresas/indexempresa.html(size=${data.size},page=${data.number})}"
+                                                 href="#"> <span aria-hidden="true">&laquo;</span> Anterior
+                        </a></li>
+                    </th:block>
+
+                    <th:block th:each="pageNumber : ${pageNumbers}">
+                        <li th:if="${data.number+1 == pageNumber}"
+                            class="page-item active"><span class="page-link"
+                                                           th:text=${pageNumber}>#</span></li>
+                        <li th:unless="${data.number+1 == pageNumber}"
+                            class="page-item"><a class="page-link"
+                                                 th:href="@{/empresas/indexempresa.html(size=${data.size}, page=${pageNumber})}"
+                                                 th:text=${pageNumber} href="#">1</a></li>
+                    </th:block>
+
+                    </th:block>
+                    <th:block th:if="${data.hasNext()}">
+                        <li class="page-item"><a class="page-link"
+                                                 th:href="@{/empresas/indexempresa.html(size=${data.size},page=${data.number+2})}"
+                                                 href="#" aria-label="Siguiente"> Siguiente <span aria-hidden="true">&raquo;</span></a></li>
+                    </th:block>
+
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

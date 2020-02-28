@@ -1,0 +1,97 @@
+{"properties": [
+  {
+    "name": "username",
+    "type": "java.lang.String",
+    "description": "A description for 'username'"
+  },
+  {
+    "name": "password",
+    "type": "java.lang.String",
+    "description": "A description for 'password'"
+  },
+  {
+    "name": "type",
+    "type": "java.lang.String",
+    "description": "A description for 'type'"
+  },
+  {
+    "name": "url",
+    "type": "java.lang.String",
+    "description": "A description for 'url'"
+  },
+  {
+    "name": "hikari",
+    "type": "java.lang.String",
+    "description": "A description for 'hikari'"
+  },
+  {
+    "name": "auto-commit",
+    "type": "java.lang.String",
+    "description": "A description for 'auto-commit'"
+  },
+  {
+    "name": "data-source-properties",
+    "type": "java.lang.String",
+    "description": "A description for 'data-source-properties'"
+  },
+  {
+    "name": "cachePrepStmts",
+    "type": "java.lang.String",
+    "description": "A description for 'cachePrepStmts'"
+  },
+  {
+    "name": "prepStmtCacheSqlLimit",
+    "type": "java.lang.String",
+    "description": "A description for 'prepStmtCacheSqlLimit'"
+  },
+  {
+    "name": "jpa",
+    "type": "java.lang.String",
+    "description": "A description for 'jpa'"
+  },
+  {
+    "name": "database-platform",
+    "type": "java.lang.String",
+    "description": "A description for 'database-platform'"
+  },
+  {
+    "name": "database",
+    "type": "java.lang.String",
+    "description": "A description for 'database'"
+  },
+  {
+    "name": "show-sql",
+    "type": "java.lang.String",
+    "description": "A description for 'show-sql'"
+  },
+  {
+    "name": "main",
+    "type": "java.lang.String",
+    "description": "A description for 'main'"
+  },
+  {
+    "name": "allow-bean-definition-overriding",
+    "type": "java.lang.String",
+    "description": "A description for 'allow-bean-definition-overriding'"
+  },
+  {
+    "name": "thymeleaf",
+    "type": "java.lang.String",
+    "description": "A description for 'thymeleaf'"
+  },
+  {
+    "name": "mode",
+    "type": "java.lang.String",
+    "description": "A description for 'mode'"
+  },
+  {
+    "name": "useServerPrepStmts",
+    "type": "java.lang.String",
+    "description": "A description for 'useServerPrepStmts'"
+  },
+  {
+    "name": "prepStmtCacheSize",
+    "type": "java.lang.String",
+    "description": "A description for 'prepStmtCacheSize'"
+  }
+]}
