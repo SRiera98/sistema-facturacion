@@ -2,6 +2,7 @@ package ar.com.facturacion.servicios;
 
 import java.util.List;
 
+import ar.com.facturacion.dominio.Encabezado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,6 @@ public class FacturacionServicio {
 	
 	
 	public void facturar(Cliente cliente, List<Producto> productos) {
-		
 	}
+
 }

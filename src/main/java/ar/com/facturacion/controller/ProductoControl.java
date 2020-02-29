@@ -71,7 +71,6 @@ public class ProductoControl {
     }
 
 
-
     @GetMapping(value = "/eliminar/{id}")
     public String eliminarProducto(@PathVariable Long id){
         Producto producto= repository.findById(id).get();
