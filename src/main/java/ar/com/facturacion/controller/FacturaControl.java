@@ -31,17 +31,19 @@ public class FacturaControl {
 
     @GetMapping(value = "/generar")
     public String crearEncabezado(Model model){
-        List<Cliente> clientes = null;
-        clientes.addAll(clienteRepositorio.findAll());
         model.addAttribute("encabezado",new Encabezado());
         //model.addAttribute("pie",new Pie());
         model.addAttribute("titulo","Factura");
-        model.addAttribute("clientes",clientes);
+        System.out.println("HOLA SOY GET 1\n\n\n");
+        model.addAttribute("clientes",clienteRepositorio.findAll());
+        System.out.println("HOLA SOY GET\n\n\n");
         return "facturas/creacion_factura.html";
     }
 
     @PostMapping(value = "/generar")
     public String subirFactura(){
+        System.out.println("HOLA SOY POST\n\n\n");
+
         return "facturas/creacion_factura.html";
     }
 

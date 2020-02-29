@@ -1,72 +1,219 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css"href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Factura</title>
 
-    <title>Modelo de Factura</title>
+    <style>
+        .invoice-box {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+            font-size: 16px;
+            line-height: 24px;
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color: #555;
+        }
+
+        .invoice-box table {
+            width: 100%;
+            line-height: inherit;
+            text-align: left;
+        }
+
+        .invoice-box table td {
+            padding: 5px;
+            vertical-align: top;
+        }
+
+        .invoice-box table tr td:nth-child(2) {
+            text-align: right;
+        }
+
+        .invoice-box table tr.top table td {
+            padding-bottom: 20px;
+        }
+
+        .invoice-box table tr.top table td.title {
+            font-size: 45px;
+            line-height: 45px;
+            color: #333;
+        }
+
+        .invoice-box table tr.information table td {
+            padding-bottom: 40px;
+        }
+
+        .invoice-box table tr.heading td {
+            background: #eee;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+        }
+
+        .invoice-box table tr.details td {
+            padding-bottom: 20px;
+        }
+
+        .invoice-box table tr.item td{
+            border-bottom: 1px solid #eee;
+        }
+
+        .invoice-box table tr.item.last td {
+            border-bottom: none;
+        }
+
+        .invoice-box table tr.total td:nth-child(2) {
+            border-top: 2px solid #eee;
+            font-weight: bold;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .invoice-box table tr.top table td {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+
+            .invoice-box table tr.information table td {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+        }
+
+        /** RTL **/
+        .rtl {
+            direction: rtl;
+            font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        }
+
+        .rtl table {
+            text-align: right;
+        }
+
+        .rtl table tr td:nth-child(2) {
+            text-align: left;
+        }
+    </style>
 </head>
+
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <ul>
-                <h4>Nombre empresa</h4>
-                <h4>Direccion Empresa</h4>
-                <h4>Ciut Empresa</h4>
-                <h4>Codigo Postal</h4>
-                <h4>Ciudad</h4>
-                <h4>Provincia</h4>
-                <h4>Pais</h4>
-            </ul>
-        </div>
-        <div class="col-md-4">
-            <h4>Fecha Factura</h4>
-            <h4>Numero Factura</h4>
-            <h4> Tipo Factura</h4>
-        </div>
-        <div class="col-md-4">
-            <ul>
-                <h4>Nombre Cliente</h4>
-                <h4>Direccion Cliente</h4>
-                <h4>Ciut Cliente</h4>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <table class="table">
-            <thead class="thead-light">
-            <tr>
-                <th scope="col">Nombre Producto</th>
-                <th scope="col">Descripcion Producto</th>
-                <th scope="col">Precio Unitario</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Subtotal</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td colspan="5">
-                    <div style="padding-left: 80%;color:black;border: solid black 1px;">
-                        <h3 >TOTAL:</h3>
-                        <h3>21022</h3>
-                    </div>
+<div class="invoice-box">
+    <table cellpadding="0" cellspacing="0">
+        <tr class="top">
+            <td colspan="4">
+                <table>
+                    <tr>
+                        <td class="title">
+                            <img src="https://www.sparksuite.com/images/logo.png" style="width:100%; max-width:300px;">
+                        </td>
 
-                </td>
+                        <td>
+                            Número de Factura: 00000001932<br>
+                            Fecha de Factura: DD/MM/YY<br>
+                            Tipo de Factura: A<br>
+                            Factura Anulada: NO
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
 
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="row">
+        <tr class="information">
+            <td colspan="4">
+                <table>
+                    <tr>
+                        <td>
+                            Empresa S.R.L.<br>
+                            CUIT: 20219787038<br>
+                            Dirección: Mitre 291, San Rafael Mza.
+                        </td>
 
-    </div>
+                        <td>
+                            Nombre Cliente: Acme Corp.<br>
+                            Dirección: Alsina 2981<br>
+                            Categoria: Mayorista
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+
+        <tr class="heading">
+            <td>
+                Descripción
+            </td>
+            <td>
+                Cantidad
+            </td>
+            <td>
+                Precio Unitario
+            </td>
+            <td>
+                Importe
+            </td>
+        </tr>
+
+        <tr class="item">
+            <td>
+                Televisor Samsung 45" 4K
+            </td>
+
+            <td>
+                3
+            </td>
+            <td>
+                $50000.00
+            </td>
+            <td>
+                $150000.00
+            </td>
+        </tr>
+
+        <tr class="item">
+            <td>
+                Xiaomi Redmi Note 8
+            </td>
+
+            <td>
+                1
+            </td>
+            <td>
+                $20000.00
+            </td>
+            <td>
+                $20000.00
+            </td>
+        </tr>
+
+        <tr class="item last">
+            <td>
+                Notebook ASUS Ryzen 5 1600X
+            </td>
+
+            <td>
+                1
+            </td>
+            <td>
+                $100000.00
+            </td>
+            <td>
+                $100000.00
+            </td>
+        </tr>
+
+        <tr class="total">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                Total: $270000.00
+            </td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>

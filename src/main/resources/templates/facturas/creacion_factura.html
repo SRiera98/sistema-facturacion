@@ -21,14 +21,12 @@
         <br/>
         <h2>Introduzca los datos de la Factura</h2>
         <hr/>
-        <div th:class="${#fields.hasErrors('factura.encabezado.cliente')} ? 'form-group row has-danger' : (*{factura.encabezado.cliente == null} ? 'form-group row' : 'form-group row has-success')">
-            <label for="encabezado.cliente" class="col-sm-2 col-form-label">Cliente</label>
+            <label  class="col-sm-2 col-form-label">Cliente</label>
             <div class="col-sm-6">
-                <select th:field="*{factura.encabezado.cliente}">
-                    <option th:each="cliente : ${clientes.content}" th:value="${cliente.nombre}" th:text="${cliente.nombre}"></option>
+                <select th:each="cliente : ${clientes.content}" th:field="*{encabezado.cliente}">
+                    <option  th:value="${cliente.nombre}" th:text="${cliente.nombre}"></option>
                 </select>
             </div>
-        </div>
 <!--
         <div th:class="${#fields.hasErrors('nombre')} ? 'form-group row has-danger' : (*{nombre == null} ? 'form-group row' : 'form-group row has-success')">
             <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
