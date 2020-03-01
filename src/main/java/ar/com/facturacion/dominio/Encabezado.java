@@ -3,7 +3,7 @@ package ar.com.facturacion.dominio;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
+import java.sql.Timestamp;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,11 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.lang.Nullable;
 
 
 @EqualsAndHashCode
@@ -31,14 +34,20 @@ public class Encabezado implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
 	private Long id;
-	private Date fecha;
+	@NotNull
+	private Timestamp fecha;
+	@NotNull
+	@Size(min = 1,max = 11)
 	private String numero;
+	@Nullable
 	private String letra;
+	@NotNull
 	@OneToOne
 	private Cliente cliente;
 	@OneToMany(mappedBy = "encabezado")
 	private List<Item> items;
-	private Boolean anulado;
+	@NotNull
+	private Boolean anulado=false;
 	public Long getId() {
 		return id;
 	}
@@ -48,7 +57,7 @@ public class Encabezado implements Serializable {
 	public Date getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) {
+	public void setFecha(Timestamp fecha) {
 		this.fecha = fecha;
 	}
 	public String getNumero() {
@@ -75,11 +84,20 @@ public class Encabezado implements Serializable {
 	public void setAnulado(Boolean anulado) {
 		this.anulado = anulado;
 	}
+
 	@Override
 	public String toString() {
-		return "Encabezado [id=" + id + ", fecha=" + fecha + ", numero=" + numero + ", letra=" + letra + ", cliente="
-				+ cliente + ", anulado=" + anulado + "]";
+		return "Encabezado{" +
+				"id=" + id +
+				", fecha=" + fecha +
+				", numero='" + numero + '\'' +
+				", letra='" + letra + '\'' +
+				", cliente=" + cliente +
+				", items=" + items +
+				", anulado=" + anulado +
+				'}';
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

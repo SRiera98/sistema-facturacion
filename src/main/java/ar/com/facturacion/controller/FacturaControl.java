@@ -24,9 +24,6 @@ import java.util.*;
 public class FacturaControl {
 
     @Autowired
-    private EncabezadoRepositorio encabezadoRepositorio;
-    private ItemRepositorio itemRepositorio;
-    private PieRepositorio pieRepositorio;
     private ClienteRepositorio clienteRepositorio;
 
     @GetMapping(value = "/generar")
@@ -35,7 +32,8 @@ public class FacturaControl {
         //model.addAttribute("pie",new Pie());
         model.addAttribute("titulo","Factura");
         System.out.println("HOLA SOY GET 1\n\n\n");
-        model.addAttribute("clientes",clienteRepositorio.findAll());
+        System.out.println(clienteRepositorio.findByVisibilidad());
+        model.addAttribute("clientes",clienteRepositorio.findByVisibilidad());
         System.out.println("HOLA SOY GET\n\n\n");
         return "facturas/creacion_factura.html";
     }

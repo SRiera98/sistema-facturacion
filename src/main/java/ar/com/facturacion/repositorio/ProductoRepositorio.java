@@ -17,4 +17,7 @@ public interface ProductoRepositorio extends JpaRepository<Producto, Long>{
 	@Query(value = "SELECT * FROM facturacion.productos where estado=1",nativeQuery = true)
 	Page<Producto> findByEstado(Pageable pageable);
 
+	@Query(value = "SELECT * FROM facturacion.productos where estado=1",nativeQuery = true)
+	List<Producto> findByEstado();
+
 }
