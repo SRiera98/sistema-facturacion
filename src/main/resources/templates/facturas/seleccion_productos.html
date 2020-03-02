@@ -24,7 +24,7 @@
 <div></div>
 <div class="container">
 
-    <form method="post" th:action="@{/factura/establecer_productos}" th:object="${item}">
+    <form method="post" th:action="@{/factura/establecer_productos/{id}(id=${id})}" th:object="${item}">
         <br/>
         <h2>Seleccione los Productos de la Factura</h2>
         <hr/>
@@ -34,11 +34,42 @@
                 <h3>Productos</h3>
             </div>
             <div class="col-md-6">
-                <select name="producto" class="selectpicker" multiple data-live-search="true" th:field="*{producto}">
+                <select class="form-control form-control-lg" name="producto" th:field="*{producto}">
                     <option th:each="producto : ${productos}"  th:value="${producto.id}" th:text="${producto.nombre}"></option>
-                </select>
+                z</select>
             </div>
             <div class="col-md-3"></div>
+        </div>
+
+        <div class="row">
+
+            <div th:class="${#fields.hasErrors('cantidad')} ? 'form-group row has-danger' : (*{cantidad == null} ? 'form-group row' : 'form-group row has-success')">
+                <div class="col-md-3">
+                    <h4>Cantidad</h4>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input class="form-control text-center" th:field="*{cantidad}" type="text" th:class="${#fields.hasErrors('cantidad')} ? 'form-control form-control-danger' : (*{cantidad == null} ? 'form-control' : 'form-control form-control-success')" placeholder="introduzca cantidad a comprar" required="required"/>
+                    </div>
+                    <div th:if="${#fields.hasErrors('cantidad')}" class="form-control-feedback">La cantidad es obligatoria</div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <h4>Precio Unitario</h4>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input class="form-control text-center" th:field="*{precioUnitario}" type="text" th:class="${#fields.hasErrors('precioUnitario')} ? 'form-control form-control-danger' : (*{precioUnitario == null} ? 'form-control' : 'form-control form-control-success')" placeholder="introduzca precio unitario" required="required"/>
+                </div>
+                <div th:if="${#fields.hasErrors('precioUnitario')}" class="form-control-feedback">El precio es obligatoria</div>
+            </div>
+            <div class="col-md-3"></div>
+
         </div>
 
         <div class="form-group row">

@@ -36,16 +36,11 @@ public class EncabezadoControl {
     @GetMapping("/creacion_factura")
     public String creacionFactura(Encabezado encabezado,Errors errors,Model model ) {
         List<Cliente> clientes;
-        List<Producto> productos;
-        List<Item> items = null;
-        productos=productorepository.findByEstado();
         clientes=clienterepository.findByVisibilidad();
         model.addAttribute("titulo", "Listado de Clientes");
         model.addAttribute("data", clientes);
-        model.addAttribute("productos",productos);
         model.addAttribute("encabezado",new Encabezado());
 
-        model.addAttribute("items",items);
         return "facturas/creacion_factura";
     }
 //MAÑANA HACER OTRO CONTROLADOR PARA CREAR ITEMS Y GUARDARLO EN LA TABLA DE ITEMS CONSULTANDO SI ES NECESARIO LA INFO DEL ENCABEZADO (SE USA OTRA VISTA)
@@ -62,7 +57,8 @@ public class EncabezadoControl {
         if(encabezado.getId()==null){
             encabezadorepository.save(encabezado);
         }
-        return "facturas/mis_facturas.html";
+        Long id=encabezado.getId();
+        return "redirect:/factura/establecer_productos/"+id;
     }
 
 }
