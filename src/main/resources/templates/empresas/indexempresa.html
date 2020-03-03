@@ -11,6 +11,8 @@
           crossorigin="anonymous">
     <link rel="stylesheet" type="text/css"href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!--Hoja de Estilo-->
+    <link rel="stylesheet" type="text/css" href="static/css/estilo.css" th:href="@{/css/estilo.css}"/>
     <title th:text="${titulo}">titulo</title>
 </head>
 <body>
@@ -20,8 +22,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title" th:text="${titulo}"
-                style="text-align: center;">Card title</h5>
+            <h5 class="card-title texto_centrado" th:text="${titulo}">Card title</h5>
 
             <table class="table">
                 <thead class="thead-dark">

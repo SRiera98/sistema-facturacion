@@ -9,10 +9,12 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Hoja de Estilo-->
+    <link rel="stylesheet" type="text/css" href="static/css/estilo.css" th:href="@{/css/estilo.css}"/>
 </head>
 <body>
 <header th:replace="fragments/header.html :: header"></header>
-<div style="text-align: center">
+<div class="texto_centrado">
     <h1 th:text="${titulo}">Titulo</h1>
 </div>
 <div class="container">

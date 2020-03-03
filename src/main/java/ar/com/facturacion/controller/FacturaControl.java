@@ -33,7 +33,7 @@ public class FacturaControl {
         model.addAttribute("titulo","Factura");
         System.out.println("HOLA SOY GET 1\n\n\n");
         System.out.println(clienteRepositorio.findByVisibilidad());
-        model.addAttribute("clientes",clienteRepositorio.findByVisibilidad());
+        model.addAttribute("data",clienteRepositorio.findByVisibilidad());
         System.out.println("HOLA SOY GET\n\n\n");
         return "facturas/creacion_factura.html";
     }

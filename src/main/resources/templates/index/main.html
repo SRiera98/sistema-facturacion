@@ -9,21 +9,24 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
     <link rel="stylesheet" type="text/css"href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--Hoja de Estilo-->
+    <link rel="stylesheet" type="text/css" href="static/css/estilo.css" th:href="@{/css/estilo.css}"/>
     <title>Sistema de Facturación</title>
 </head>
 <body>
 <header th:replace="fragments/header.html :: header"></header>
-<div style="text-align: center">
+<div class="texto_centrado">
     <h1>Menú Principal</h1>
 </div>
 <div class="container">
-    <div class="row" style="padding: 100px"></div>
+    <div class="row" style="padding: 50px"></div>
     <div class="row">
         <div class="col-md-2" >
 
         </div>
-        <div class="col-md-8" style="text-align: center">
-            <a style="border: 1.4px black solid" type="button" class="btn btn-primary btn-lg btn-block" th:href="@{/cliente/registrar}">Registrar Cliente</a>
+        <div class="col-md-8 texto_centrado">
+            <a type="button" class="btn btn-primary btn-lg btn-block botones_inicio" th:href="@{/cliente/registrar}">Registrar Cliente</a>
         </div>
         <div class="col-md-2">
 
@@ -35,20 +38,7 @@
 
         </div>
         <div class="col-md-8">
-            <a style="border: 1.4px black solid" type="button" class="btn btn-primary btn-lg btn-block" th:href="@{/producto/registrar}">Registrar Producto</a>
-
-        </div>
-        <div class="col-md-2">
-
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-
-        </div>
-        <div class="col-md-8">
-            <a style="border: 1.4px black solid" type="button" class="btn btn-primary btn-lg btn-block" th:href="@{/factura/generar}">Generar Factura</a>
+            <a type="button" class="btn btn-primary btn-lg btn-block botones_inicio" th:href="@{/producto/registrar}">Registrar Producto</a>
 
         </div>
         <div class="col-md-2">
@@ -61,7 +51,20 @@
 
         </div>
         <div class="col-md-8">
-            <a style="border: 1.4px black solid" type="button" class="btn btn-primary btn-lg btn-block" href="#">Facturas Existentes</a>
+            <a type="button" class="btn btn-primary btn-lg btn-block botones_inicio" th:href="@{/factura/generar}">Generar Factura</a>
+
+        </div>
+        <div class="col-md-2">
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
+            <a type="button" class="btn btn-primary btn-lg btn-block botones_inicio" href="#">Facturas Existentes</a>
 
         </div>
         <div class="col-md-2">

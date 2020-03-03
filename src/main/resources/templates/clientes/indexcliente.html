@@ -9,9 +9,10 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css"href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <title th:text="${titulo}">titulo</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Hoja de Estilo-->
+    <link rel="stylesheet" type="text/css" href="static/css/estilo.css" th:href="@{/css/estilo.css}"/>
+    <title th:text="${titulo}">titulo</title>s
 </head>
 <body>
 <header th:replace="fragments/header.html :: header"></header>
@@ -19,8 +20,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title" th:text="${titulo}"
-                style="text-align: center;">Card title</h5>
+            <h5 class="card-title texto_centrado" th:text="${titulo}">Card title</h5>
 
             <table class="table">
                 <thead class="thead-dark">
@@ -32,7 +32,7 @@
                     <th scope="col">Cuit</th>
                     <th scope="col">Categoria</th>
                     <th scope="col" colspan="2">
-                        <div style="text-align: center">Acción</div>
+                        <div class="texto_centrado">Acción</div>
                     </th>
 
                 </tr>
