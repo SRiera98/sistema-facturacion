@@ -21,7 +21,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -29,8 +29,8 @@
                         Ver
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Ver Clientes</a>
-                        <a class="dropdown-item" href="#">Ver Productos</a>
+                        <a class="dropdown-item" th:href="@{/cliente/indexcliente.html}">Ver Clientes</a>
+                        <a class="dropdown-item" th:href="@{/productos/index.html}">Ver Productos</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Ver Facturas</a>
                     </div>

@@ -23,7 +23,7 @@
 
         </div>
         <div class="col-md-8" style="text-align: center">
-            <button style="border: 1.4px black solid" type="button" class="btn btn-primary btn-lg btn-block" href="#">Registrar Cliente</button>
+            <a style="border: 1.4px black solid" type="button" class="btn btn-primary btn-lg btn-block" th:href="@{/cliente/registrar}">Registrar Cliente</a>
         </div>
         <div class="col-md-2">
 
@@ -35,20 +35,7 @@
 
         </div>
         <div class="col-md-8">
-            <button style="border: 1.4px black solid" type="button" class="btn btn-primary btn-lg btn-block" href="#">Registrar Producto</button>
-
-        </div>
-        <div class="col-md-2">
-
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-
-        </div>
-        <div class="col-md-8">
-            <button style="border: 1.4px black solid" type="button" class="btn btn-primary btn-lg btn-block" href="#">Generar Factura</button>
+            <a style="border: 1.4px black solid" type="button" class="btn btn-primary btn-lg btn-block" th:href="@{/productos/registrar}">Registrar Producto</a>
 
         </div>
         <div class="col-md-2">
@@ -61,7 +48,20 @@
 
         </div>
         <div class="col-md-8">
-            <button style="border: 1.4px black solid" type="button" class="btn btn-primary btn-lg btn-block" href="#">Facturas Existentes</button>
+            <a style="border: 1.4px black solid" type="button" class="btn btn-primary btn-lg btn-block" th:href="@{/factura/generar}">Generar Factura</a>
+
+        </div>
+        <div class="col-md-2">
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
+            <a style="border: 1.4px black solid" type="button" class="btn btn-primary btn-lg btn-block" href="#">Facturas Existentes</a>
 
         </div>
         <div class="col-md-2">

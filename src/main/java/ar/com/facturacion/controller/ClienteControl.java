@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Controller
-@RequestMapping("/clientes")
+@RequestMapping("/cliente")
 
 public class ClienteControl {
 
@@ -68,7 +68,7 @@ public class ClienteControl {
         Cliente cliente= repository.findById(id).get();
         cliente.setVisibilidad((byte) 0);
         repository.save(cliente);
-        return "redirect:/clientes/indexcliente.html";
+        return "redirect:/cliente/indexcliente.html";
     }
 
     @GetMapping(value = "/modificar/{id}")
@@ -82,7 +82,7 @@ public class ClienteControl {
     public String cambiosClienteModif(@Valid Cliente cliente){
         repository.save(cliente);
 
-        return "redirect:/clientes/indexcliente.html";
+        return "redirect:/cliente/indexcliente.html";
     }
 
 }
