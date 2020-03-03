@@ -22,7 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 @Controller
-@RequestMapping("/productos")
+@RequestMapping("/producto")
 public class ProductoControl {
 	
 	@Autowired
@@ -76,7 +76,7 @@ public class ProductoControl {
         Producto producto= repository.findById(id).get();
         producto.setEstado((byte)0);
         repository.save(producto);
-        return "redirect:/productos/index.html";
+        return "redirect:/producto/index.html";
     }
 
     @GetMapping(value = "/modificar/{id}")
@@ -90,7 +90,7 @@ public class ProductoControl {
     public String cambiosProdModif(@Valid Producto producto){
         repository.save(producto);
 
-        return "redirect:/productos/index.html";
+        return "redirect:/producto/index.html";
     }
 
 }

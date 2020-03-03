@@ -23,18 +23,31 @@
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
                 </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Ver
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" th:href="@{/cliente/indexcliente.html}">Ver Clientes</a>
-                        <a class="dropdown-item" th:href="@{/productos/index.html}">Ver Productos</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Ver Facturas</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/cliente/indexcliente.html}">Clientes</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/producto/index.html}">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/cliente/indexcliente.html}">Facturas</a>
+                </li>
+                <!--
+             <li class="nav-item dropdown">
+                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Ver
+                 </a>
+
+
+                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <a class="dropdown-item" ></a>
+                     <a class="dropdown-item" th:href="@{/producto/index.html}">Ver Productos</a>
+                     <div class="dropdown-divider"></div>
+                     <a class="dropdown-item" href="#">Ver Facturas</a>
+                 </div>
+
+                </li>
+                  -->
 
             </ul>
         </div>

@@ -47,12 +47,11 @@
                     <td th:text="${producto.descripcion}"></td>
                     <td>
                         <a type="button" class="btn btn-danger"
-                           th:href="@{/productos/eliminar/{id}(id=${producto.id})}"> Eliminar <span aria-hidden="true">&raquo;</span></a>
+                           th:href="@{/producto/eliminar/{id}(id=${producto.id})}"> Eliminar </a>
                     </td>
                     <td>
                         <a type="button" class="btn btn-warning"
-                           th:href="@{/productos/modificar/{id}(id=${producto.id})}"> Modificar <span
-                                aria-hidden="true">&raquo;</span></a>
+                           th:href="@{/producto/modificar/{id}(id=${producto.id})}"> Modificar</a>
                     </td>
                     </tr>
 
@@ -65,7 +64,7 @@
 
                     <th:block th:if="${data.hasPrevious()}">
                         <li class="page-item"><a class="page-link"
-                                                 th:href="@{/productos/index.html(size=${data.size},page=${data.number})}"
+                                                 th:href="@{/producto/index.html(size=${data.size},page=${data.number})}"
                                                  href="#"> <span aria-hidden="true">&laquo;</span> Anterior
                         </a></li>
                     </th:block>
@@ -76,13 +75,13 @@
                                                            th:text=${pageNumber}>#</span></li>
                         <li th:unless="${data.number+1 == pageNumber}"
                             class="page-item"><a class="page-link"
-                                                 th:href="@{/productos/index.html(size=${data.size}, page=${pageNumber})}"
+                                                 th:href="@{/producto/index.html(size=${data.size}, page=${pageNumber})}"
                                                  th:text=${pageNumber} href="#">1</a></li>
                     </th:block>
 
                     <th:block th:if="${data.hasNext()}">
                         <li class="page-item"><a class="page-link"
-                                                 th:href="@{/productos/index.html(size=${data.size},page=${data.number+2})}"
+                                                 th:href="@{/producto/index.html(size=${data.size},page=${data.number+2})}"
                                                  href="#" aria-label="Siguiente"> Siguiente <span aria-hidden="true">&raquo;</span></a>
                         </li>
                     </th:block>

@@ -12,14 +12,14 @@
 </head>
 <body>
 <header th:replace="fragments/header.html :: header"></header>
-<div>
+<div style="text-align: center">
     <h1 th:text="${titulo}">Titulo</h1>
 </div>
 <div class="container">
 
 
 
-        <form method="post" th:action="@{/productos/registrar}" th:object="${producto}">
+        <form method="post" th:action="@{/producto/registrar}" th:object="${producto}">
             <br/>
             <h2>Introduzca los datos de producto</h2>
             <br/>
@@ -27,7 +27,7 @@
                 <label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
                 <div class="col-sm-6">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-fw fa-user fa" aria-hidden="true"></i></span>
+                        <span class="input-group-addon"><i class="fa fa-barcode" aria-hidden="true"></i></span>
                         <input th:field="*{codigo}" type="text" th:class="${#fields.hasErrors('codigo')} ? 'form-control form-control-danger' : (*{codigo == null} ? 'form-control' : 'form-control form-control-success')" placeholder="introduzca codigo de producto" required="required"/>
                     </div>
                     <div th:if="${#fields.hasErrors('codigo')}" class="form-control-feedback">El codigo debe contener entre 5 y 13 caracteres</div>
@@ -38,7 +38,7 @@
                 <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
                 <div class="col-sm-6">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-fw fa-user fa" aria-hidden="true"></i></span>
+                        <span class="input-group-addon"><i class="fas fa-box-open" aria-hidden="true"></i></span>
                         <input th:field="*{nombre}" type="text" th:class="${#fields.hasErrors('nombre')} ? 'form-control form-control-danger' : (*{nombre == null} ? 'form-control' : 'form-control form-control-success')" placeholder="Ingrese nombre producto" required="required"/>
                     </div>
                     <div th:if="${#fields.hasErrors('nombre')}" class="form-control-feedback">El nombre debe contener entre 4 y 50 caracteres</div>
@@ -49,7 +49,7 @@
                 <label for="descripcion" class="col-sm-2 col-form-label">Descripcion</label>
                 <div class="col-sm-6">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-fw fa-envelope" aria-hidden="true"></i></span>
+                        <span class="input-group-addon"><i class="fas fa-book-open" aria-hidden="true"></i></span>
                         <input th:field="*{descripcion}" type="text" th:class="${#fields.hasErrors('descripcion')} ? 'form-control form-control-danger' : (*{descripcion == null} ? 'form-control' : 'form-control form-control-success')" placeholder="Ingrese descripcion de producto" required="required"/>
                     </div>
                     <div th:if="${#fields.hasErrors('descripcion')}" class="form-control-feedback">La descripcion debe tener entre 7 y 255 caracteres</div>
