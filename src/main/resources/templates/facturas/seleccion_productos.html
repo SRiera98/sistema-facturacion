@@ -21,7 +21,7 @@
     <title th:text="${titulo}">titulo</title>
 </head>
 <body>
-<div></div>
+<header th:replace="fragments/header.html :: header"></header>
 <div class="container">
 
     <form method="post" th:action="@{/factura/establecer_productos/{id}(id=${id})}" th:object="${item}">
@@ -42,8 +42,6 @@
         </div>
 
         <div class="row">
-
-            <div th:class="${#fields.hasErrors('cantidad')} ? 'form-group row has-danger' : (*{cantidad == null} ? 'form-group row' : 'form-group row has-success')">
                 <div class="col-md-3">
                     <h4>Cantidad</h4>
                 </div>
@@ -54,7 +52,6 @@
                     <div th:if="${#fields.hasErrors('cantidad')}" class="form-control-feedback">La cantidad es obligatoria</div>
                 </div>
                 <div class="col-md-3"></div>
-            </div>
         </div>
 
         <div class="row">
@@ -81,6 +78,6 @@
 
     </form>
 </div>
-
+<footer th:replace="fragments/footer.html :: footer"></footer>
 </body>
 </html>

@@ -12,6 +12,7 @@
 
 </head>
 <body>
+<header th:replace="fragments/header.html :: header"></header>
 <div>
     <h1 th:text="${titulo}">Titulo</h1>
 </div>
@@ -86,5 +87,6 @@
     </form>
 </div>
 
+<footer th:replace="fragments/footer.html :: footer"></footer>
 </body>
 </html>

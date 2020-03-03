@@ -14,6 +14,8 @@
     <title th:text="${titulo}">titulo</title>
 </head>
 <body>
+<header th:replace="fragments/header.html :: header"></header>
+
 <div class="container">
 
     <div class="card">
@@ -39,14 +41,14 @@
                 <th:block th:each="empresa : ${data.content}">
 
                     <tr>
-                        <th th:text="${empresa.id}">1</th>
-                        <td th:text="${empresa.cuit}">Mark</td>
-                        <td th:text="${empresa.nombre}">Otto</td>
-                        <td th:text="${empresa.direccion}">Otto</td>
-                        <th th:text="${empresa.codigoPostal}"></th>
-                        <td th:text="${empresa.ciudad}">@mdo</td>
-                        <td th:text="${empresa.provincia}">@mdo</td>
-                        <td th:text="${empresa.pais}">@mdo</td>
+                        <td th:text="${empresa.id}"></td>
+                        <td th:text="${empresa.cuit}"></td>
+                        <td th:text="${empresa.nombre}"></td>
+                        <td th:text="${empresa.direccion}"></td>
+                        <td th:text="${empresa.codigoPostal}"></td>
+                        <td th:text="${empresa.ciudad}"></td>
+                        <td th:text="${empresa.provincia}"></td>
+                        <td th:text="${empresa.pais}"></td>
                     </tr>
 
                 </th:block>
@@ -102,5 +104,7 @@
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+<footer th:replace="fragments/footer.html :: footer"></footer>
 </body>
 </html>

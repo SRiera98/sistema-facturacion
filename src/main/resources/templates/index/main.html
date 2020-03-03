@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport"
@@ -12,6 +12,7 @@
     <title>Sistema de Facturación</title>
 </head>
 <body>
+<header th:replace="fragments/header.html :: header"></header>
 <div style="text-align: center">
     <h1>Menú Principal</h1>
 </div>
@@ -69,5 +70,7 @@
 
     </div>
 </div>
+
+<footer th:replace="fragments/footer.html :: footer"></footer>
 </body>
 </html>

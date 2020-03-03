@@ -31,7 +31,9 @@
                     <th scope="col">Direcci&oacute;n</th>
                     <th scope="col">Cuit</th>
                     <th scope="col">Categoria</th>
-                    <th scope="col">Acción</th>
+                    <th scope="col" colspan="2">
+                        <div style="text-align: center">Acción</div>
+                    </th>
 
                 </tr>
                 </thead>
@@ -40,11 +42,11 @@
                 <th:block th:each="cliente : ${data.content}">
 
                     <tr>
-                        <th th:text="${cliente.id}">1</th>
-                        <td th:text="${cliente.codigo}">Mark</td>
-                        <td th:text="${cliente.nombre}">Otto</td>
-                        <td th:text="${cliente.direccion}">Otto</td>
-                        <td th:text="${cliente.cuit}">@mdo</td>
+                        <td th:text="${cliente.id}"></td>
+                        <td th:text="${cliente.codigo}"></td>
+                        <td th:text="${cliente.nombre}"></td>
+                        <td th:text="${cliente.direccion}"></td>
+                        <td th:text="${cliente.cuit}"></td>
                         <td th:text="${cliente.categoria}"></td>
                         <td >
                             <a type="button" class="btn btn-danger"

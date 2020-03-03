@@ -13,6 +13,7 @@
     <title>Cliente Registrado</title>
 </head>
 <body>
+<header th:replace="fragments/header.html :: header"></header>
 <div class="container">
     <div class="col-sm-6" th:if="${clienteInfo}" th:object="${clienteInfo}">
         <div class="card mt-3">
@@ -26,5 +27,6 @@
         </div>
     </div>
 </div>
+<footer th:replace="fragments/footer.html :: footer"></footer>
 </body>
 </html>

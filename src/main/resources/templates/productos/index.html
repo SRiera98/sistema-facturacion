@@ -9,11 +9,13 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css"href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title th:text="${titulo}">titulo</title>
 </head>
 <body>
+<header th:replace="fragments/header.html :: header"></header>
 <div class="container">
 
     <div class="card">
@@ -28,7 +30,9 @@
                     <th scope="col">C&oacute;digo</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripci&oacute;n</th>
-                    <th scope="col">Acción</th>
+                    <th scope="col" colspan="2">
+                    <div style="text-align: center">Acción</div>
+                    </th>
 
                 </tr>
                 </thead>
@@ -36,19 +40,20 @@
 
                 <th:block th:each="producto : ${data.content}">
 
+                    <tr>
+                    <td th:text="${producto.id}"></td>
+                    <td th:text="${producto.codigo}"></td>
+                    <td th:text="${producto.nombre}"></td>
+                    <td th:text="${producto.descripcion}"></td>
                     <td>
-                        <th th:text="${producto.id}">1</th>
-                        <td th:text="${producto.codigo}">Mark</td>
-                        <td th:text="${producto.nombre}">Otto</td>
-                        <td th:text="${producto.descripcion}">@mdo</td>
-                        <td colspan="2">
-                            <a type="button" class="btn btn-danger"
-                               th:href="@{/productos/eliminar/{id}(id=${producto.id})}"> Eliminar <span aria-hidden="true">&raquo;</span></a>
-                        </td>
-                        <td >
-                            <a type="button" class="btn btn-warning"
-                                th:href="@{/productos/modificar/{id}(id=${producto.id})}"> Modificar <span aria-hidden="true">&raquo;</span></a>
-                        </td>
+                        <a type="button" class="btn btn-danger"
+                           th:href="@{/productos/eliminar/{id}(id=${producto.id})}"> Eliminar <span aria-hidden="true">&raquo;</span></a>
+                    </td>
+                    <td>
+                        <a type="button" class="btn btn-warning"
+                           th:href="@{/productos/modificar/{id}(id=${producto.id})}"> Modificar <span
+                                aria-hidden="true">&raquo;</span></a>
+                    </td>
                     </tr>
 
                 </th:block>
@@ -78,7 +83,8 @@
                     <th:block th:if="${data.hasNext()}">
                         <li class="page-item"><a class="page-link"
                                                  th:href="@{/productos/index.html(size=${data.size},page=${data.number+2})}"
-                                                 href="#" aria-label="Siguiente"> Siguiente <span aria-hidden="true">&raquo;</span></a></li>
+                                                 href="#" aria-label="Siguiente"> Siguiente <span aria-hidden="true">&raquo;</span></a>
+                        </li>
                     </th:block>
 
                 </ul>
@@ -88,7 +94,6 @@
     </div>
 
 </div>
-
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -102,5 +107,6 @@
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+<footer th:replace="fragments/footer.html :: footer"></footer>
 </body>
 </html>

@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+<header th:replace="fragments/header.html :: header"></header>
+
 <div>
     <h1 th:text="${titulo}">Titulo</h1>
 </div>
@@ -66,5 +68,6 @@
     </form>
 </div>
 
+<footer th:replace="fragments/footer.html :: footer"></footer>
 </body>
 </html>

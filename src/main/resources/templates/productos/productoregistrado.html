@@ -13,6 +13,7 @@
     <title>Producto Registrado</title>
 </head>
 <body>
+<header th:replace="fragments/header.html :: header"></header>
 <div class="container">
 
     <div class="col-sm-6" th:if="${productoInfo}" th:object="${productoInfo}">
@@ -27,5 +28,7 @@
     </div>
 
 </div>
+
+<footer th:replace="fragments/footer.html :: footer"></footer>
 </body>
 </html>
