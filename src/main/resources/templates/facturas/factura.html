@@ -101,7 +101,7 @@
 
 <body>
 <header th:replace="fragments/header.html :: header"></header>
-<div class="invoice-box">
+<div class="invoice-box" th:object="${encabezado}">
     <table cellpadding="0" cellspacing="0">
         <tr class="top">
             <td colspan="4">
@@ -112,9 +112,9 @@
                         </td>
 
                         <td>
-                            Número de Factura: 00000001932<br>
-                            Fecha de Factura: DD/MM/YY<br>
-                            Tipo de Factura: A<br>
+                            Número de Factura: <div th:text="*{numero}"></div><br>
+                            Fecha de Factura: <div th:text="*{fecha}"></div><br>
+                            Tipo de Factura: <div th:text="*{letra}"></div><br>
                             Factura Anulada: NO
                         </td>
                     </tr>
@@ -133,9 +133,9 @@
                         </td>
 
                         <td>
-                            Nombre Cliente: Acme Corp.<br>
-                            Dirección: Alsina 2981<br>
-                            Categoria: Mayorista
+                            Nombre Cliente: <div th:text="*{cliente.nombre}"></div><br>
+                            Dirección: <div th:text="*{cliente.direccion}"></div><br>
+                            Categoria: <div th:text="*{cliente.categoria}"></div>
                         </td>
                     </tr>
                 </table>
@@ -145,7 +145,7 @@
 
         <tr class="heading">
             <td>
-                Descripción
+                Nombre
             </td>
             <td>
                 Cantidad
@@ -157,61 +157,23 @@
                 Importe
             </td>
         </tr>
+        <th:block th:each="i : ${items}">
 
-        <tr class="item">
-            <td>
-                Televisor Samsung 45" 4K
-            </td>
+            <tr class="item">
+                <td th:text="${i.producto.nombre}"></td>
+                <td th:text="${i.cantidad}"></td>
+                <td th:text="${i.precioUnitario}"></td>
+                <td th:text="${i.subTotal}"></td>
+            </tr>
 
-            <td>
-                3
-            </td>
-            <td>
-                $50000.00
-            </td>
-            <td>
-                $150000.00
-            </td>
-        </tr>
-
-        <tr class="item">
-            <td>
-                Xiaomi Redmi Note 8
-            </td>
-
-            <td>
-                1
-            </td>
-            <td>
-                $20000.00
-            </td>
-            <td>
-                $20000.00
-            </td>
-        </tr>
-
-        <tr class="item last">
-            <td>
-                Notebook ASUS Ryzen 5 1600X
-            </td>
-
-            <td>
-                1
-            </td>
-            <td>
-                $100000.00
-            </td>
-            <td>
-                $100000.00
-            </td>
-        </tr>
+        </th:block>
 
         <tr class="total">
             <td></td>
             <td></td>
             <td></td>
             <td>
-                Total: $270000.00
+                Total: $ <div th:text="${total}"></div>
             </td>
         </tr>
     </table>

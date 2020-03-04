@@ -85,7 +85,11 @@ public class Encabezado implements Serializable {
 		this.anulado = anulado;
 	}
 
-	@Override
+    public List<Item> getItems() {
+        return items;
+    }
+
+    @Override
 	public String toString() {
 		return "Encabezado{" +
 				"id=" + id +
@@ -93,7 +97,6 @@ public class Encabezado implements Serializable {
 				", numero='" + numero + '\'' +
 				", letra='" + letra + '\'' +
 				", cliente=" + cliente +
-				", items=" + items +
 				", anulado=" + anulado +
 				'}';
 	}
@@ -157,5 +160,9 @@ public class Encabezado implements Serializable {
 			return false;
 		return true;
 	}
-	
+	public void addItem(Item item){
+		items.add(item);
+		item.setEncabezado(this);
+
+	}
 }

@@ -32,7 +32,6 @@ public class ItemControl {
 
     @GetMapping(value = "/establecer_productos/{id}")
     public String indicarProductos(Model model, @PathVariable Long id){
-
         List<Producto> listaproductos=null;
         listaproductos=productorepository.findByEstado();
 
@@ -49,9 +48,9 @@ public class ItemControl {
     @PostMapping(value = "/establecer_productos/{ided}")
     public String procesarProductos(@PathVariable Long ided, Item item,Model model){
         System.out.println("----------------------------------------------------ENTROOOOO-------------------------------\n\n");
-        if(item.getId()==null){
-            BigDecimal cantidad=item.getCantidad();
-            BigDecimal precio=item.getPrecioUnitario();
+        if(item.getId()==null) {
+            BigDecimal cantidad = item.getCantidad();
+            BigDecimal precio = item.getPrecioUnitario();
             item.setSubTotal(cantidad.multiply(precio));
             item.setEncabezado(encabezadorepository.getOne(ided));
             itemrepository.save(item);

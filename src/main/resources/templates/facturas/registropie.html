@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html th:lang="es" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title th:text="${titulo}">titulo</title>
+</head>
+<body>
+<header th:replace="fragments/header.html :: header"></header>
+<div class="container">
+
+    <form method="post" th:action="@{/factura/observaciones/{id}(id=${id})}" th:object="${pie}">
+        <br/>
+        <h2>Introduzca los datos de la Factura</h2>
+        <hr/>
+
+        <div class="row" th:class="${#fields.hasErrors('observaciones')} ? 'form-group row has-danger' : (*{observaciones == null} ? 'form-group row' : 'form-group row has-success')">
+            <div class="col-md-3">
+                <h3>Observaciones Factura</h3>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input th:field="*{observaciones}" type="text" th:class="${#fields.hasErrors('observaciones')} ? 'form-control form-control-danger' : (*{observaciones == null} ? 'form-control' : 'form-control form-control-success')" placeholder="Ingrese las observaciones de la factura"/>
+                </div>
+                <div th:if="${#fields.hasErrors('observaciones')}" class="form-control-feedback">Las observaciones tienen un maximo de 255 caracteres</div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-6">
+                <button type="submit" class="btn btn-primary btn-md btn-block">Terminar</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<footer th:replace="fragments/footer.html :: footer"></footer>
+</body>
+</html>
