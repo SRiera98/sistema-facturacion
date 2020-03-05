@@ -4,99 +4,11 @@
     <meta charset="utf-8">
     <title>Factura</title>
 
-    <style>
-        .invoice-box {
-            max-width: 800px;
-            margin: auto;
-            padding: 30px;
-            border: 1px solid #eee;
-            box-shadow: 0 0 10px rgba(0, 0, 0, .15);
-            font-size: 16px;
-            line-height: 24px;
-            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-            color: #555;
-        }
-
-        .invoice-box table {
-            width: 100%;
-            line-height: inherit;
-            text-align: left;
-        }
-
-        .invoice-box table td {
-            padding: 5px;
-            vertical-align: top;
-        }
-
-        .invoice-box table tr td:nth-child(2) {
-            text-align: right;
-        }
-
-        .invoice-box table tr.top table td {
-            padding-bottom: 20px;
-        }
-
-        .invoice-box table tr.top table td.title {
-            font-size: 45px;
-            line-height: 45px;
-            color: #333;
-        }
-
-        .invoice-box table tr.information table td {
-            padding-bottom: 40px;
-        }
-
-        .invoice-box table tr.heading td {
-            background: #eee;
-            border-bottom: 1px solid #ddd;
-            font-weight: bold;
-        }
-
-        .invoice-box table tr.details td {
-            padding-bottom: 20px;
-        }
-
-        .invoice-box table tr.item td{
-            border-bottom: 1px solid #eee;
-        }
-
-        .invoice-box table tr.item.last td {
-            border-bottom: none;
-        }
-
-        .invoice-box table tr.total td:nth-child(2) {
-            border-top: 2px solid #eee;
-            font-weight: bold;
-        }
-
-        @media only screen and (max-width: 600px) {
-            .invoice-box table tr.top table td {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
-
-            .invoice-box table tr.information table td {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
-        }
-
-        /** RTL **/
-        .rtl {
-            direction: rtl;
-            font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-        }
-
-        .rtl table {
-            text-align: right;
-        }
-
-        .rtl table tr td:nth-child(2) {
-            text-align: left;
-        }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--Hoja de Estilo-->
+    <link rel="stylesheet" type="text/css" href="static/css/estilo.css" th:href="@{/css/estilo.css}"/>
 </head>
 
 <body>
@@ -115,7 +27,6 @@
                             Número de Factura: <div th:text="*{numero}"></div><br>
                             Fecha de Factura: <div th:text="*{fecha}"></div><br>
                             Tipo de Factura: <div th:text="*{letra}"></div><br>
-                            Factura Anulada: NO
                         </td>
                     </tr>
                 </table>
@@ -126,12 +37,13 @@
             <td colspan="4">
                 <table>
                     <tr>
+                        <th:block th:each="i : ${empresa}">
                         <td>
-                            Empresa S.R.L.<br>
-                            CUIT: 20219787038<br>
-                            Dirección: Mitre 291, San Rafael Mza.
+                            <div th:text="${i.nombre}"></div><br>
+                            CUIT: <div th:text="${i.cuit}"></div><br>
+                            Dirección: <div th:text="${i.direccion}"></div>
                         </td>
-
+                        </th:block>
                         <td>
                             Nombre Cliente: <div th:text="*{cliente.nombre}"></div><br>
                             Dirección: <div th:text="*{cliente.direccion}"></div><br>

@@ -1,10 +1,7 @@
 package ar.com.facturacion.controller;
 
 import ar.com.facturacion.dominio.*;
-import ar.com.facturacion.repositorio.ClienteRepositorio;
-import ar.com.facturacion.repositorio.EncabezadoRepositorio;
-import ar.com.facturacion.repositorio.ItemRepositorio;
-import ar.com.facturacion.repositorio.PieRepositorio;
+import ar.com.facturacion.repositorio.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,21 +27,21 @@ public class FacturaControl {
     private PieRepositorio pierepository;
     @Autowired
     private EncabezadoRepositorio encabezadorepository;
+    @Autowired
+    private EmpresaRepositorio empresarepository;
 
     @GetMapping(value = "/misfacturas")
     public String misFacturas(Model model){
-        List<Factura> facturas=null;
+        List<Factura> facturas=new LinkedList<Factura>();
+        Factura factura=new Factura();
         List<Encabezado> encabezados=encabezadorepository.findAll();
         for (Encabezado i:encabezados) {
-            Long id=i.getId();
-            System.out.println("ANTES\n\n");
-            List<Item> items=itemrepository.findByEncabezadoContaining(i);
-            System.out.println("DESPUES\n\n");
-            Factura factura=new Factura();
+            List<Item> items=itemrepository.findByIdEncabezado(i.getId());
             factura.setEncabezado(i);
             factura.setItems(items);
-            factura.setPie(pierepository.findByEncabezadoContaining(i));
+            factura.setPie(pierepository.findByIdEncabezado(i.getId()));
             facturas.add(factura);
+            factura=new Factura();
         }
         System.out.println(facturas);
         model.addAttribute("facturas",facturas);
@@ -52,16 +49,19 @@ public class FacturaControl {
 
     }
 
-    @PostMapping(value = "/crear")
+    /*@PostMapping(value = "/crear")
     public String subirFactura(){
         return "facturas/creacion_factura.html";
-    }
+    }*/
     @GetMapping(value = "/{id}")
     public String verFactura(Model model, @PathVariable Long id){
         Encabezado encabezado = encabezadorepository.getOne(id);
         System.out.println(encabezado.getItems());
         model.addAttribute("encabezado",encabezado);
         model.addAttribute("items",encabezado.getItems());
+        model.addAttribute("empresa",empresarepository.findAll());
+        System.out.println(empresarepository.findAll());
+        System.out.println("\n\n\n");
         BigDecimal total=new BigDecimal(0);
         for (Item i: encabezado.getItems()) {
             total=total.add(i.getSubTotal());
@@ -72,5 +72,13 @@ public class FacturaControl {
         return "facturas/factura";
     }
 
+
+   /* @GetMapping(value = "/eliminar/{id}")
+    public String eliminarProducto(@PathVariable Long id){
+        Producto producto= encabezadorepository.findById(id).get();
+        producto.setEstado((byte)0);
+        repository.save(producto);
+        return "redirect:/producto/index.html";
+    }*/
 
 }

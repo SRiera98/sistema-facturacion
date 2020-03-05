@@ -10,9 +10,9 @@ import java.util.List;
 
 public interface ItemRepositorio extends JpaRepository<Item, Long>{
 
-    List<Item> findByEncabezadoContaining(Encabezado encabezado);
+    List<Item> findByEncabezado(Long id);
 
-    @Query(value = "SELECT * FROM facturacion.facturas_items where facturas_encabezado_id=?1",nativeQuery = true)
-    List<Item> findByIdEncabezado();
+    @Query(value = "SELECT I.* FROM facturas_encabezado E,facturas_items I WHERE E.id=I.facturas_encabezado_id and E.id=?1",nativeQuery = true)
+    List<Item> findByIdEncabezado(Long id);
 
 }
