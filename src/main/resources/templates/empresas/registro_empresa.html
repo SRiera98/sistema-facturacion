@@ -17,15 +17,14 @@
 
 
 
-    <form method="post" th:action="@{/empresas/registrar}" th:object="${empresa}">
+    <form method="post" th:action="@{/empresa/registrar}" th:object="${empresa}">
         <br/>
         <h2>Introduzca los datos de la Empresa</h2>
         <hr/>
         <div th:class="${#fields.hasErrors('cuit')} ? 'form-group row has-danger' : (*{cuit == null} ? 'form-group row' : 'form-group row has-success')">
-            <label for="cuit" class="col-sm-2 col-form-label">Cuit</label>
+            <label class="col-sm-2 col-form-label">Cuit</label>
             <div class="col-sm-6">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-fw fa-user fa" aria-hidden="true"></i></span>
                     <input th:field="*{cuit}" type="text" th:class="${#fields.hasErrors('cuit')} ? 'form-control form-control-danger' : (*{cuit == null} ? 'form-control' : 'form-control form-control-success')" placeholder="Introduzca cuit de la Empresa" required="required"/>
                 </div>
                 <div th:if="${#fields.hasErrors('cuit')}" class="form-control-feedback">El cuit debe contener entre 9 y 11 caracteres</div>
@@ -33,10 +32,9 @@
         </div>
 
         <div th:class="${#fields.hasErrors('nombre')} ? 'form-group row has-danger' : (*{nombre == null} ? 'form-group row' : 'form-group row has-success')">
-            <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+            <label  class="col-sm-2 col-form-label">Nombre</label>
             <div class="col-sm-6">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-fw fa-user fa" aria-hidden="true"></i></span>
                     <input th:field="*{nombre}" type="text" th:class="${#fields.hasErrors('nombre')} ? 'form-control form-control-danger' : (*{nombre == null} ? 'form-control' : 'form-control form-control-success')" placeholder="Ingrese nombre de la empresa" required="required"/>
                 </div>
                 <div th:if="${#fields.hasErrors('nombre')}" class="form-control-feedback">El nombre debe contener entre 3 y 120 caracteres</div>
@@ -44,10 +42,9 @@
         </div>
 
         <div th:class="${#fields.hasErrors('direccion')} ? 'form-group row has-danger' : (*{direccion == null} ? 'form-group row' : 'form-group row has-success')">
-            <label for="direccion" class="col-sm-2 col-form-label">Direccion</label>
+            <label class="col-sm-2 col-form-label">Direccion</label>
             <div class="col-sm-6">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-fw fa-envelope" aria-hidden="true"></i></span>
                     <input th:field="*{direccion}" type="text" th:class="${#fields.hasErrors('direccion')} ? 'form-control form-control-danger' : (*{direccion == null} ? 'form-control' : 'form-control form-control-success')" placeholder="Ingrese direccion de la Empresa" required="required"/>
                 </div>
                 <div th:if="${#fields.hasErrors('direccion')}" class="form-control-feedback">La direccion debe tener entre 6 y 50 caracteres</div>
@@ -55,10 +52,9 @@
         </div>
 
         <div th:class="${#fields.hasErrors('codigoPostal')} ? 'form-group row has-danger' : (*{codigoPostal == null} ? 'form-group row' : 'form-group row has-success')">
-            <label for="codigoPostal" class="col-sm-2 col-form-label">Codigo Postal</label>
+            <label class="col-sm-2 col-form-label">Codigo Postal</label>
             <div class="col-sm-6">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-fw fa-envelope" aria-hidden="true"></i></span>
                     <input th:field="*{codigoPostal}" type="text" th:class="${#fields.hasErrors('codigoPostal')} ? 'form-control form-control-danger' : (*{codigoPostal == null} ? 'form-control' : 'form-control form-control-success')" placeholder="Ingrese el Codigo Postal de la Empresa" required="required"/>
                 </div>
                 <div th:if="${#fields.hasErrors('codigoPostal')}" class="form-control-feedback">El Codigo Postal debe tener entre 1 y 11 caracteres</div>
@@ -66,10 +62,9 @@
         </div>
 
         <div th:class="${#fields.hasErrors('ciudad')} ? 'form-group row has-danger' : (*{ciudad == null} ? 'form-group row' : 'form-group row has-success')">
-            <label for="ciudad" class="col-sm-2 col-form-label">Ciudad</label>
+            <label class="col-sm-2 col-form-label">Ciudad</label>
             <div class="col-sm-6">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-fw fa-envelope" aria-hidden="true"></i></span>
                     <input th:field="*{ciudad}" type="text" th:class="${#fields.hasErrors('ciudad')} ? 'form-control form-control-danger' : (*{ciudad == null} ? 'form-control' : 'form-control form-control-success')" placeholder="Ingrese la Ciudad de la Empresa" required="required"/>
                 </div>
                 <div th:if="${#fields.hasErrors('ciudad')}" class="form-control-feedback">La Ciudad debe tener entre 4 y 50 caracteres</div>
@@ -77,10 +72,9 @@
         </div>
 
         <div th:class="${#fields.hasErrors('provincia')} ? 'form-group row has-danger' : (*{provincia == null} ? 'form-group row' : 'form-group row has-success')">
-            <label for="provincia" class="col-sm-2 col-form-label">Provincia</label>
+            <label class="col-sm-2 col-form-label">Provincia</label>
             <div class="col-sm-6">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-fw fa-envelope" aria-hidden="true"></i></span>
                     <input th:field="*{provincia}" type="text" th:class="${#fields.hasErrors('provincia')} ? 'form-control form-control-danger' : (*{codigoPostal == null} ? 'form-control' : 'form-control form-control-success')" placeholder="Ingrese la Provincia de la Empresa" required="required"/>
                 </div>
                 <div th:if="${#fields.hasErrors('provincia')}" class="form-control-feedback">La Provincia debe tener entre 4 y 50 caracteres</div>
@@ -88,10 +82,9 @@
         </div>
 
         <div th:class="${#fields.hasErrors('pais')} ? 'form-group row has-danger' : (*{pais == null} ? 'form-group row' : 'form-group row has-success')">
-            <label for="pais" class="col-sm-2 col-form-label">Pais</label>
+            <label class="col-sm-2 col-form-label">Pais</label>
             <div class="col-sm-6">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-fw fa-envelope" aria-hidden="true"></i></span>
                     <input th:field="*{pais}" type="text" th:class="${#fields.hasErrors('pais')} ? 'form-control form-control-danger' : (*{codigoPostal == null} ? 'form-control' : 'form-control form-control-success')" placeholder="Ingrese el Pais de la Empresa" required="required"/>
                 </div>
                 <div th:if="${#fields.hasErrors('pais')}" class="form-control-feedback">El Pais debe tener entre 4 y 50 caracteres</div>

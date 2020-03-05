@@ -30,7 +30,7 @@ public class ProductoControl {
 	private static Integer currentPage = 1;
 	private static Integer pageSize = 5;
 	
-	@GetMapping("/index.html")
+	@GetMapping("/index")
 	public String index(Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
         Page<Producto> dataPage;
         if (!page.isPresent() && !size.isPresent()){
@@ -53,13 +53,14 @@ public class ProductoControl {
     public String agregarProducto(@Valid Producto producto,Errors errors, Model model) {
         model.addAttribute("producto", new Producto());
         model.addAttribute("titulo","Registro Producto");
-        return "productos/registro_prod";
+        model.addAttribute("action","/producto/registrar");
+        return "productos/form_prod";
     }
 
     @PostMapping(value = "/registrar")
     public String guardarProducto(@Valid Producto producto,Errors errors, Model model) {
         if(errors.hasErrors()){
-            return "productos/registro_prod";
+            return "productos/form_prod";
         }
 
         model.addAttribute("productoInfo",producto);
@@ -67,7 +68,7 @@ public class ProductoControl {
         if(producto.getId()==null){
             repository.save(producto);
         }
-        return "productos/productoregistrado.html";
+        return "redirect:/producto/index";
     }
 
 
@@ -76,7 +77,7 @@ public class ProductoControl {
         Producto producto= repository.findById(id).get();
         producto.setEstado((byte)0);
         repository.save(producto);
-        return "redirect:/producto/index.html";
+        return "redirect:/producto/index";
     }
 
     @GetMapping(value = "/modificar/{id}")
@@ -84,13 +85,14 @@ public class ProductoControl {
         Producto producto=repository.findById(id).get();
         model.addAttribute("titulo","Modificado de Producto");
         model.addAttribute("producto",producto);
-        return "productos/modificado_prod.html";
+        model.addAttribute("action","/producto/modificar/"+id);
+        return "productos/form_prod";
     }
     @PostMapping(value="/modificar/{id}")
     public String cambiosProdModif(@Valid Producto producto){
         repository.save(producto);
 
-        return "redirect:/producto/index.html";
+        return "redirect:/producto/index";
     }
 
 }

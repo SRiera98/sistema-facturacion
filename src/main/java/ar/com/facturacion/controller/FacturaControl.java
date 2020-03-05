@@ -49,10 +49,7 @@ public class FacturaControl {
 
     }
 
-    /*@PostMapping(value = "/crear")
-    public String subirFactura(){
-        return "facturas/creacion_factura.html";
-    }*/
+
     @GetMapping(value = "/{id}")
     public String verFactura(Model model, @PathVariable Long id){
         Encabezado encabezado = encabezadorepository.getOne(id);

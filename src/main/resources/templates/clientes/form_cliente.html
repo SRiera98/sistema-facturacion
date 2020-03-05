@@ -15,15 +15,14 @@
 <header th:replace="fragments/header.html :: header"></header>
 <div class="container">
 
-    <form method="post" th:action="@{/cliente/registrar}" th:object="${cliente}">
+    <form method="post" th:action="@{${action}}" th:object="${cliente}">
         <br/>
         <h2>Introduzca los datos del Cliente</h2>
         <hr/>
         <div th:class="${#fields.hasErrors('codigo')} ? 'form-group row has-danger' : (*{codigo == null} ? 'form-group row' : 'form-group row has-success')">
-            <label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
+            <label class="col-sm-2 col-form-label">Codigo</label>
             <div class="col-sm-6">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-fw fa-user fa" aria-hidden="true"></i></span>
                     <input th:field="*{codigo}" type="text" th:class="${#fields.hasErrors('codigo')} ? 'form-control form-control-danger' : (*{codigo == null} ? 'form-control' : 'form-control form-control-success')" placeholder="introduzca codigo del Cliente" required="required"/>
                 </div>
                 <div th:if="${#fields.hasErrors('codigo')}" class="form-control-feedback">El codigo debe contener entre 4 y 13 caracteres</div>
@@ -31,10 +30,9 @@
         </div>
 
         <div th:class="${#fields.hasErrors('nombre')} ? 'form-group row has-danger' : (*{nombre == null} ? 'form-group row' : 'form-group row has-success')">
-            <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+            <label class="col-sm-2 col-form-label">Nombre</label>
             <div class="col-sm-6">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-fw fa-user fa" aria-hidden="true"></i></span>
                     <input th:field="*{nombre}" type="text" th:class="${#fields.hasErrors('nombre')} ? 'form-control form-control-danger' : (*{nombre == null} ? 'form-control' : 'form-control form-control-success')" placeholder="Ingrese nombre cliente" required="required"/>
                 </div>
                 <div th:if="${#fields.hasErrors('nombre')}" class="form-control-feedback">El nombre debe contener entre 3 y 120 caracteres</div>
@@ -42,10 +40,9 @@
         </div>
 
         <div th:class="${#fields.hasErrors('direccion')} ? 'form-group row has-danger' : (*{direccion == null} ? 'form-group row' : 'form-group row has-success')">
-            <label for="direccion" class="col-sm-2 col-form-label">Direccion</label>
+            <label class="col-sm-2 col-form-label">Direccion</label>
             <div class="col-sm-6">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-fw fa-envelope" aria-hidden="true"></i></span>
                     <input th:field="*{direccion}" type="text" th:class="${#fields.hasErrors('direccion')} ? 'form-control form-control-danger' : (*{direccion == null} ? 'form-control' : 'form-control form-control-success')" placeholder="Ingrese direccion del Cliente" required="required"/>
                 </div>
                 <div th:if="${#fields.hasErrors('direccion')}" class="form-control-feedback">La direccion debe tener entre 6 y 120 caracteres</div>
@@ -53,10 +50,9 @@
         </div>
 
         <div th:class="${#fields.hasErrors('cuit')} ? 'form-group row has-danger' : (*{cuit == null} ? 'form-group row' : 'form-group row has-success')">
-            <label for="cuit" class="col-sm-2 col-form-label">Cuit</label>
+            <label class="col-sm-2 col-form-label">Cuit</label>
             <div class="col-sm-6">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-fw fa-envelope" aria-hidden="true"></i></span>
                     <input th:field="*{cuit}" type="text" th:class="${#fields.hasErrors('cuit')} ? 'form-control form-control-danger' : (*{cuit == null} ? 'form-control' : 'form-control form-control-success')" placeholder="Ingrese el cuit del Cliente" required="required"/>
                 </div>
                 <div th:if="${#fields.hasErrors('cuit')}" class="form-control-feedback">El cuit debe tener 11 caracteres</div>
@@ -64,7 +60,7 @@
         </div>
 
         <div th:class="${#fields.hasErrors('categoria')} ? 'form-group row has-danger' : (*{categoria == null} ? 'form-group row' : 'form-group row has-success')">
-            <label for="categoria" class="col-sm-2 col-form-label">Categoria</label>
+            <label class="col-sm-2 col-form-label">Categoria</label>
             <div class="col-sm-6">
                 <select class="form-control form-control-lg" th:field="*{categoria}" >
                     <option th:value="'mayorista'"th:text="Mayorísta"></option>

@@ -25,7 +25,7 @@ public class ClienteControl {
     private ClienteRepositorio repository;
     private static Integer currentPage = 1;
     private static Integer pageSize = 5;
-    @GetMapping("/indexcliente.html")
+    @GetMapping("/indexcliente")
     public String index_cliente(Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
         Page<Cliente> dataPage;
         if (!page.isPresent() && !size.isPresent()){
@@ -46,13 +46,15 @@ public class ClienteControl {
     @GetMapping(value = "/registrar")
     public String agregarCliente(@Valid Cliente cliente,Errors errors, Model model) {
         model.addAttribute("cliente", new Cliente());
-        return "clientes/registro_cliente";
+        model.addAttribute("action","/cliente/registrar");
+        return "clientes/form_cliente";
     }
 
     @PostMapping(value = "/registrar")
     public String guardarCliente(@Valid Cliente cliente,Errors errors, Model model) {
+        model.addAttribute("registrar",true);
         if(errors.hasErrors()){
-            return "clientes/registro_cliente";
+            return "clientes/form_cliente";
         }
 
         model.addAttribute("clienteInfo",cliente);
@@ -60,7 +62,7 @@ public class ClienteControl {
         if(cliente.getId()==null){
             repository.save(cliente);
         }
-        return "clientes/clienteregistrado.html";
+        return "redirect:/cliente/indexcliente";
     }
 
     @GetMapping(value = "/eliminar/{id}")
@@ -68,7 +70,7 @@ public class ClienteControl {
         Cliente cliente= repository.findById(id).get();
         cliente.setVisibilidad((byte) 0);
         repository.save(cliente);
-        return "redirect:/cliente/indexcliente.html";
+        return "redirect:/cliente/indexcliente";
     }
 
     @GetMapping(value = "/modificar/{id}")
@@ -76,13 +78,14 @@ public class ClienteControl {
         Cliente cliente=repository.findById(id).get();
         model.addAttribute("titulo","Modificado de Cliente");
         model.addAttribute("cliente",cliente);
-        return "clientes/modificado_cliente.html";
+        model.addAttribute("action","/cliente/modificar/"+id);
+        return "clientes/form_cliente";
     }
     @PostMapping(value="/modificar/{id}")
     public String cambiosClienteModif(@Valid Cliente cliente){
         repository.save(cliente);
 
-        return "redirect:/cliente/indexcliente.html";
+        return "redirect:/cliente/indexcliente";
     }
 
 }

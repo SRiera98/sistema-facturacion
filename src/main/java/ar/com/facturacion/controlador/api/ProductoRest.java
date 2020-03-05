@@ -28,7 +28,7 @@ public class ProductoRest {
 	@Autowired
 	private ProductoRepositorio productoRepositorio;
 	
-	@GetMapping
+	@GetMapping("/todos")
 	public List<Producto> getProductos(){
 		return productoRepositorio.findAll();
 	}
@@ -42,7 +42,7 @@ public class ProductoRest {
 	@GetMapping("/busqueda/{texto}")
 	public List<Producto> getProductoPorTexto(@PathVariable String texto){
 		List<Producto> lista = new ArrayList<Producto>();
-		if(texto.length() <= 2) {
+		if(texto.length() >= 2) {
 			lista = productoRepositorio.findByCodigoContainingOrNombreContaining(texto, texto);
 		} 
 		return lista; 

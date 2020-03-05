@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Controller
-@RequestMapping("/empresas")
+@RequestMapping("/empresa")
 public class EmpresaControl {
 
     @Autowired
@@ -28,7 +28,7 @@ public class EmpresaControl {
     private static Integer currentPage = 1;
     private static Integer pageSize = 5;
 
-    @GetMapping("/indexempresa.html")
+    @GetMapping("/indexempresa")
     public String index_empresa(Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
         Page<Empresa> dataPage;
         if (!page.isPresent() && !size.isPresent()){
@@ -45,28 +45,6 @@ public class EmpresaControl {
         model.addAttribute("data", dataPage);
         return "empresas/indexempresa";
     }
-
-    /*@GetMapping(value = "/registar")
-    public String registroGet(Model model){
-	    model.addAttribute("empresa",new Empresa());
-	    return "clientes/registro_empresa";
-    }
-
-    @RequestMapping(value = "/registrar")
-    public String registroPost(@Valid Empresa empresa, Errors errors, Model model){
-        if (errors.hasErrors()){
-            return "empresas/registro_empresa";
-        }
-
-        model.addAttribute("empresa",new Empresa());
-        model.addAttribute("empresaInfo",empresa);
-        if(empresa.getId()==null){
-            repository.save(empresa);
-        }
-        return "empresas/registro_empresa";
-    }
-*/
-
 
 
     @GetMapping(value = "/registrar")
@@ -86,7 +64,7 @@ public class EmpresaControl {
         if(empresa.getId()==null){
             repository.save(empresa);
         }
-        return "empresas/empresaregistrada.html";
+        return "empresas/empresaregistrada";
     }
 
 

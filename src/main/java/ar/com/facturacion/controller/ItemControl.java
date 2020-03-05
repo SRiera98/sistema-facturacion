@@ -30,7 +30,7 @@ public class ItemControl {
     @Autowired
     private EncabezadoRepositorio encabezadorepository;
 
-    @GetMapping(value = "/establecer_productos/{id}")
+    @GetMapping(value = "/agregarproductos/{id}")
     public String indicarProductos(Model model, @PathVariable Long id){
         List<Producto> listaproductos=null;
         listaproductos=productorepository.findByEstado();
@@ -45,9 +45,8 @@ public class ItemControl {
     }
 
 
-    @PostMapping(value = "/establecer_productos/{ided}")
+    @PostMapping(value = "/agregarproductos/{ided}")
     public String procesarProductos(@PathVariable Long ided, Item item,Model model){
-        System.out.println("----------------------------------------------------ENTROOOOO-------------------------------\n\n");
         if(item.getId()==null) {
             BigDecimal cantidad = item.getCantidad();
             BigDecimal precio = item.getPrecioUnitario();
@@ -55,8 +54,7 @@ public class ItemControl {
             item.setEncabezado(encabezadorepository.getOne(ided));
             itemrepository.save(item);
         }
-        System.out.println("ITEM\n\n\n"+item+"\n\n\n");
-        return "redirect:/factura/establecer_productos/"+ided;
+        return "redirect:/factura/agregarproductos/"+ided;
     }
 
 }

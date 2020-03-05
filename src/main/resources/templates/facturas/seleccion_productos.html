@@ -24,7 +24,7 @@
 <header th:replace="fragments/header.html :: header"></header>
 <div class="container">
 
-    <form method="post" th:action="@{/factura/establecer_productos/{id}(id=${id})}" th:object="${item}">
+    <form method="post" th:action="@{/factura/agregarproductos/{id}(id=${id})}" th:object="${item}">
         <br/>
         <h2>Seleccione los Productos de la Factura</h2>
         <hr/>

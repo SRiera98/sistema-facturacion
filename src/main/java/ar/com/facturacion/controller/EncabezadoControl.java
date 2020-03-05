@@ -33,7 +33,7 @@ public class EncabezadoControl {
     @Autowired
     private EncabezadoRepositorio encabezadorepository;
 
-    @GetMapping("/creacion_factura")
+    @GetMapping("/crear")
     public String creacionFactura(Encabezado encabezado,Errors errors,Model model ) {
         List<Cliente> clientes;
         clientes=clienterepository.findByVisibilidad();
@@ -43,22 +43,18 @@ public class EncabezadoControl {
 
         return "facturas/creacion_factura";
     }
-//MAÑANA HACER OTRO CONTROLADOR PARA CREAR ITEMS Y GUARDARLO EN LA TABLA DE ITEMS CONSULTANDO SI ES NECESARIO LA INFO DEL ENCABEZADO (SE USA OTRA VISTA)
-    @PostMapping(value = "/creacion_factura")
+
+    @PostMapping(value = "/crear")
     public String guardarFactura(Encabezado encabezado,Errors errors,Model model) {
-        System.out.println("ENTRO AL POST\n\n");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis()); //Instanciamos fecha actual para el encabezado de factura.
         encabezado.setFecha(timestamp);
-        System.out.println("PASO ERRORES\n\n");
         model.addAttribute("facturaInfo",encabezado);
-        System.out.println(encabezado);
-        System.out.println("PASO PRINT ENCABEZADO\n\n");
 
         if(encabezado.getId()==null){
             encabezadorepository.save(encabezado);
         }
-        Long id=encabezado.getId();
-        return "redirect:/factura/establecer_productos/"+id;
+
+        return "redirect:/factura/agregarproductos/"+encabezado.getId();
     }
 
 }
