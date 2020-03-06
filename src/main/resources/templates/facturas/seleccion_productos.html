@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
 
 
@@ -31,12 +28,13 @@
 
         <div class="row">
             <div class="col-md-3">
-                <h3>Productos</h3>
+                <h4>Productos</h4>
             </div>
             <div class="col-md-6">
                 <select class="form-control form-control-lg" name="producto" th:field="*{producto}">
+                    <option value="" hidden>Seleccione un producto...</option>
                     <option th:each="producto : ${productos}"  th:value="${producto.id}" th:text="${producto.nombre}"></option>
-                z</select>
+                </select>
             </div>
             <div class="col-md-3"></div>
         </div>
@@ -81,6 +79,10 @@
 
     </form>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 <footer th:replace="fragments/footer.html :: footer"></footer>
 </body>
 </html>

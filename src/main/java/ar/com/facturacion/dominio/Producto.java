@@ -35,13 +35,13 @@ public class Producto implements Serializable {
 	@Size(min = 7,max = 255)
 	private String descripcion;
 	@NotNull
-	private Byte estado=1;
+	private Boolean estado=true;
 
-	public Byte getEstado() {
+	public Boolean getEstado() {
 		return estado;
 	}
 
-	public void setEstado(Byte estado) {
+	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
 

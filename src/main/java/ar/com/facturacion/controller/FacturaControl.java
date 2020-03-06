@@ -4,13 +4,13 @@ import ar.com.facturacion.dominio.*;
 import ar.com.facturacion.repositorio.*;
 import ar.com.facturacion.servicios.FacturacionServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.math.BigDecimal;
@@ -20,8 +20,6 @@ import java.util.*;
 @RequestMapping("/factura")
 public class FacturaControl {
 
-    @Autowired
-    private ClienteRepositorio clienterepositorio;
     @Autowired
     private ItemRepositorio itemrepository;
     @Autowired
@@ -35,7 +33,7 @@ public class FacturaControl {
     public String misFacturas(Model model){
         List<Factura> facturas=new LinkedList<Factura>();
         Factura factura=new Factura();
-        List<Encabezado> encabezados=encabezadorepository.findAll();
+        List<Encabezado> encabezados=encabezadorepository.findByAnulado();
         for (Encabezado i:encabezados) {
             List<Item> items=itemrepository.findByIdEncabezado(i.getId());
             factura.setEncabezado(i);
@@ -62,12 +60,13 @@ public class FacturaControl {
     }
 
 
-   /* @GetMapping(value = "/eliminar/{id}")
-    public String eliminarProducto(@PathVariable Long id){
-        Producto producto= encabezadorepository.findById(id).get();
-        producto.setEstado((byte)0);
-        repository.save(producto);
-        return "redirect:/producto/index.html";
-    }*/
+    @GetMapping(value = "/eliminar/{id}")
+    public String eliminarProducto(@PathVariable Long id, RedirectAttributes redirectAttributes){
+        Encabezado encabezado= encabezadorepository.getOne(id);
+        encabezado.setAnulado(true);
+        encabezadorepository.save(encabezado);
+        redirectAttributes.addFlashAttribute("mensaje","¡Factura Eliminada Correctamente!");
+        return "redirect:/factura/misfacturas";
+    }
 
 }

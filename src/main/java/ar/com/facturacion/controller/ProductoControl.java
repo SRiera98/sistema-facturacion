@@ -76,7 +76,7 @@ public class ProductoControl {
     @GetMapping(value = "/eliminar/{id}")
     public String eliminarProducto(@PathVariable Long id,RedirectAttributes redirectAttributes){
         Producto producto= repository.findById(id).get();
-        producto.setEstado((byte)0);
+        producto.setEstado(false);
         repository.save(producto);
         redirectAttributes.addFlashAttribute("mensaje","¡Producto Eliminado Correctamente!");
         return "redirect:/producto/index";

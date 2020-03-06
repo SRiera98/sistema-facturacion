@@ -25,6 +25,7 @@
             </div>
             <div class="col-md-6">
                 <select name="cliente" class="form-control form-control-lg" th:field="*{cliente}">
+                    <option value="" hidden>Seleccione un cliente...</option>
                     <option th:each="cliente : ${data}" th:value="${cliente.id}" th:text="${cliente.nombre}"></option>
 
                 </select>
@@ -51,6 +52,7 @@
             </div>
             <div class="col-md-6">
                 <select class="form-control form-control-lg" th:field="*{letra}" >
+                    <option value="" hidden>Seleccione la categoria...</option>
                     <option th:value="'A'"th:text="A"></option>
                     <option th:value="'B'"th:text="B"></option>
                     <option th:value="'C'"th:text="C"></option>

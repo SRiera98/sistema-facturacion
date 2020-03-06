@@ -46,13 +46,13 @@ public class Cliente implements Serializable {
 	private String categoria;
 
 	@NotNull
-	private Byte visibilidad=1;
+	private Boolean visibilidad=true;
 
-	public Byte getVisibilidad() {
+	public Boolean getVisibilidad() {
 		return visibilidad;
 	}
 
-	public void setVisibilidad(Byte visibilidad) {
+	public void setVisibilidad(Boolean visibilidad) {
 		this.visibilidad = visibilidad;
 	}
 

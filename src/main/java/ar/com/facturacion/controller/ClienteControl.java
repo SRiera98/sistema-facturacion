@@ -69,7 +69,7 @@ public class ClienteControl {
     @GetMapping(value = "/eliminar/{id}")
     public String eliminarCliente(@PathVariable Long id,RedirectAttributes redirectAttributes){
         Cliente cliente= repository.findById(id).get();
-        cliente.setVisibilidad((byte) 0);
+        cliente.setVisibilidad((false));
         repository.save(cliente);
         redirectAttributes.addFlashAttribute("mensaje","¡Cliente Eliminado Correctamente!");
         return "redirect:/cliente/indexcliente";
