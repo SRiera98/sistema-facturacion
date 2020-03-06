@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -51,14 +52,14 @@ public class ClienteControl {
     }
 
     @PostMapping(value = "/registrar")
-    public String guardarCliente(@Valid Cliente cliente,Errors errors, Model model) {
+    public String guardarCliente(@Valid Cliente cliente, Errors errors, Model model, RedirectAttributes redirectAttributes) {
         model.addAttribute("registrar",true);
         if(errors.hasErrors()){
             return "clientes/form_cliente";
         }
 
         model.addAttribute("clienteInfo",cliente);
-
+        redirectAttributes.addFlashAttribute("mensaje","¡Cliente Registrado Correctamente!");
         if(cliente.getId()==null){
             repository.save(cliente);
         }
@@ -66,10 +67,11 @@ public class ClienteControl {
     }
 
     @GetMapping(value = "/eliminar/{id}")
-    public String eliminarCliente(@PathVariable Long id){
+    public String eliminarCliente(@PathVariable Long id,RedirectAttributes redirectAttributes){
         Cliente cliente= repository.findById(id).get();
         cliente.setVisibilidad((byte) 0);
         repository.save(cliente);
+        redirectAttributes.addFlashAttribute("mensaje","¡Cliente Eliminado Correctamente!");
         return "redirect:/cliente/indexcliente";
     }
 
@@ -82,9 +84,9 @@ public class ClienteControl {
         return "clientes/form_cliente";
     }
     @PostMapping(value="/modificar/{id}")
-    public String cambiosClienteModif(@Valid Cliente cliente){
+    public String cambiosClienteModif(@Valid Cliente cliente,RedirectAttributes redirectAttributes){
         repository.save(cliente);
-
+        redirectAttributes.addFlashAttribute("mensaje","¡Cliente Modificado Correctamente!");
         return "redirect:/cliente/indexcliente";
     }
 

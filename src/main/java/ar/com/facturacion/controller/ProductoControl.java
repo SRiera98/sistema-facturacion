@@ -58,7 +58,7 @@ public class ProductoControl {
     }
 
     @PostMapping(value = "/registrar")
-    public String guardarProducto(@Valid Producto producto,Errors errors, Model model) {
+    public String guardarProducto(@Valid Producto producto,Errors errors, Model model,RedirectAttributes redirectAttributes) {
         if(errors.hasErrors()){
             return "productos/form_prod";
         }
@@ -68,15 +68,17 @@ public class ProductoControl {
         if(producto.getId()==null){
             repository.save(producto);
         }
+        redirectAttributes.addFlashAttribute("mensaje","¡Producto Registrado Correctamente!");
         return "redirect:/producto/index";
     }
 
 
     @GetMapping(value = "/eliminar/{id}")
-    public String eliminarProducto(@PathVariable Long id){
+    public String eliminarProducto(@PathVariable Long id,RedirectAttributes redirectAttributes){
         Producto producto= repository.findById(id).get();
         producto.setEstado((byte)0);
         repository.save(producto);
+        redirectAttributes.addFlashAttribute("mensaje","¡Producto Eliminado Correctamente!");
         return "redirect:/producto/index";
     }
 
@@ -89,9 +91,9 @@ public class ProductoControl {
         return "productos/form_prod";
     }
     @PostMapping(value="/modificar/{id}")
-    public String cambiosProdModif(@Valid Producto producto){
+    public String cambiosProdModif(@Valid Producto producto,RedirectAttributes redirectAttributes){
         repository.save(producto);
-
+        redirectAttributes.addFlashAttribute("mensaje","¡Producto Modificado Correctamente!");
         return "redirect:/producto/index";
     }
 

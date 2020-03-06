@@ -24,9 +24,9 @@
                         </td>
 
                         <td>
-                            Número de Factura: <div th:text="*{numero}"></div><br>
-                            Fecha de Factura: <div th:text="*{fecha}"></div><br>
-                            Tipo de Factura: <div th:text="*{letra}"></div><br>
+                            Número de Factura: <div class="lineamiento" th:text="*{numero}"></div><br>
+                            Fecha de Factura: <div class="lineamiento" th:text="*{fecha}"></div><br>
+                            Tipo de Factura: <div class="lineamiento" th:text="*{letra}"></div><br>
                         </td>
                     </tr>
                 </table>
@@ -39,15 +39,15 @@
                     <tr>
                         <th:block th:each="i : ${empresa}">
                         <td>
-                            <div th:text="${i.nombre}"></div><br>
-                            CUIT: <div th:text="${i.cuit}"></div><br>
-                            Dirección: <div th:text="${i.direccion}"></div>
+                            <div class="lineamiento" th:text="${i.nombre}"></div><br>
+                            CUIT: <div class="lineamiento" th:text="${i.cuit}"></div><br>
+                            Dirección: <div class="lineamiento" th:text="${i.direccion}"></div>
                         </td>
                         </th:block>
                         <td>
-                            Nombre Cliente: <div th:text="*{cliente.nombre}"></div><br>
-                            Dirección: <div th:text="*{cliente.direccion}"></div><br>
-                            Categoria: <div th:text="*{cliente.categoria}"></div>
+                            Nombre Cliente: <div class="lineamiento" th:text="*{cliente.nombre}"></div><br>
+                            Dirección: <div class="lineamiento" th:text="*{cliente.direccion}"></div><br>
+                            Categoria: <div class="lineamiento" th:text="*{cliente.categoria}"></div>
                         </td>
                     </tr>
                 </table>
@@ -85,7 +85,7 @@
             <td></td>
             <td></td>
             <td>
-                Total: $ <div th:text="${total}"></div>
+                Total: $ <div class="lineamiento" th:text="${total}"></div>
             </td>
         </tr>
     </table>

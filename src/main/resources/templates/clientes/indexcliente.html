@@ -17,7 +17,14 @@
 <body>
 <header th:replace="fragments/header.html :: header"></header>
 <div class="container">
-
+    <div th:if="${mensaje}!=null">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5 th:text="${mensaje}"></h5>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
     <div class="card">
         <div class="card-body">
             <h5 class="card-title texto_centrado" th:text="${titulo}">Card title</h5>

@@ -1,6 +1,7 @@
 
 .texto_centrado{
-    text-align: center
+    text-align: center;
+    padding-top: 10px;
 }
 .botones_inicio{
     border: 1.4px black solid
@@ -120,6 +121,9 @@
 }
 
 /* ----  ESTILO DE FACTURA  ---- */
+.lineamiento{
+    display: inline-block
+}
 .invoice-box {
     max-width: 800px;
     margin: auto;

@@ -2,6 +2,7 @@ package ar.com.facturacion.controller;
 
 import ar.com.facturacion.dominio.*;
 import ar.com.facturacion.repositorio.*;
+import ar.com.facturacion.servicios.FacturacionServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,7 +44,6 @@ public class FacturaControl {
             facturas.add(factura);
             factura=new Factura();
         }
-        System.out.println(facturas);
         model.addAttribute("facturas",facturas);
         return "facturas/mis_facturas";
 
@@ -53,20 +53,12 @@ public class FacturaControl {
     @GetMapping(value = "/{id}")
     public String verFactura(Model model, @PathVariable Long id){
         Encabezado encabezado = encabezadorepository.getOne(id);
-        System.out.println(encabezado.getItems());
         model.addAttribute("encabezado",encabezado);
         model.addAttribute("items",encabezado.getItems());
         model.addAttribute("empresa",empresarepository.findAll());
-        System.out.println(empresarepository.findAll());
-        System.out.println("\n\n\n");
-        BigDecimal total=new BigDecimal(0);
-        for (Item i: encabezado.getItems()) {
-            total=total.add(i.getSubTotal());
-        }
-        model.addAttribute("total",total);
-
-
+        model.addAttribute("total", FacturacionServicio.calcularTotal(encabezado.getItems()));
         return "facturas/factura";
+
     }
 
 
