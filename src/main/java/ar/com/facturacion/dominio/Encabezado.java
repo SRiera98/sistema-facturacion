@@ -40,7 +40,7 @@ public class Encabezado implements Serializable {
 	@NotNull
 	@Size(min = 1,max = 11)
 	private String numero;
-	@Nullable
+	@NotNull
 	private String letra;
 	@NotNull
 	@OneToOne

@@ -3,8 +3,6 @@ package ar.com.facturacion.controller;
 
 import ar.com.facturacion.dominio.Cliente;
 import ar.com.facturacion.dominio.Encabezado;
-import ar.com.facturacion.dominio.Item;
-import ar.com.facturacion.dominio.Producto;
 import ar.com.facturacion.repositorio.ClienteRepositorio;
 import ar.com.facturacion.repositorio.EncabezadoRepositorio;
 import ar.com.facturacion.repositorio.ProductoRepositorio;
@@ -15,13 +13,9 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.validation.Valid;
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+
 
 @Controller
 @RequestMapping("/factura")
@@ -45,7 +39,7 @@ public class EncabezadoControl {
     }
 
     @PostMapping(value = "/crear")
-    public String guardarFactura(Encabezado encabezado,Errors errors,Model model) {
+    public String guardarFactura(Encabezado encabezado,Model model) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis()); //Instanciamos fecha actual para el encabezado de factura.
         encabezado.setFecha(timestamp);
         model.addAttribute("facturaInfo",encabezado);

@@ -26,18 +26,41 @@
         <h2>Seleccione los Productos de la Factura</h2>
         <hr/>
 
-        <div class="row">
+        <div class="row" th:class="${#fields.hasErrors('producto')} ? 'form-group row has-danger' : (*{producto == null} ? 'form-group row' : 'form-group row has-success')">
             <div class="col-md-3">
                 <h4>Productos</h4>
             </div>
             <div class="col-md-6">
-                <select class="form-control form-control-lg" name="producto" th:field="*{producto}">
-                    <option value="" hidden>Seleccione un producto...</option>
+                <select class="form-control form-control-lg" name="producto" th:field="*{producto}" th:class="${#fields.hasErrors('producto')} ? 'form-control form-control-danger' : (*{producto == null} ? 'form-control' : 'form-control form-control-success')">
+                    <option value="null" hidden>Seleccione un producto...</option>
                     <option th:each="producto : ${productos}"  th:value="${producto.id}" th:text="${producto.nombre}"></option>
                 </select>
             </div>
+            <div th:if="${#fields.hasErrors('producto')}" class="form-control-feedback">El producto debe ser seleccionado</div>
             <div class="col-md-3"></div>
         </div>
+
+
+
+        <div class="row" th:class="${#fields.hasErrors('producto')} ? 'form-group row has-danger' : (*{producto == null} ? 'form-group row' : 'form-group row has-success')">
+            <div class="col-md-3">
+                <h3>Producto</h3>
+            </div>
+            <div class="col-md-6">
+                <select name="producto" class="form-control form-control-lg" th:field="*{producto}" th:class="${#fields.hasErrors('producto')} ? 'form-control form-control-danger' : (*{producto == null} ? 'form-control' : 'form-control form-control-success')">
+                    <option value="null" hidden>Seleccione un cliente...</option>
+                    <option th:each="producto : ${productos}" th:value="${producto.id}" th:text="${producto.nombre}"></option>
+
+                </select>
+                <div th:if="${#fields.hasErrors('producto')}" class="form-control-feedback">El producto debe ser seleccionado</div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+
+
+
+
 
         <div class="row">
                 <div class="col-md-3">
