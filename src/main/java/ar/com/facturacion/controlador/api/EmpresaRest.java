@@ -25,9 +25,10 @@ public class EmpresaRest {
 	@Autowired
 	private EmpresaRepositorio empresaRepositorio;
 	
-	@GetMapping
+	@GetMapping("/todos")
 	public List<Empresa> getEmpresas() {
 		return empresaRepositorio.findAll();
+
 	}
 	
 	@GetMapping("/{id}")
@@ -36,21 +37,21 @@ public class EmpresaRest {
 		return empresa.get();
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/eliminar/{id}")
 	public void removeEmpresa(@PathVariable Long id) {
 		Optional<Empresa> empresa = empresaRepositorio.findById(id);
 		empresaRepositorio.delete(empresa.get());
 	}
 	
-	@PostMapping
-	public void createEmpresa(@Valid @RequestBody Empresa empresa) {
+	@PostMapping("/crear")
+	public void createEmpresa(@Valid Empresa empresa) {
 		if (empresa.getId() == null) {
 			empresaRepositorio.save(empresa);
 		}
 	}
 	
-	@PutMapping
-	public void updateEmpresa(@Valid @RequestBody Empresa empresa) {
+	@PutMapping("/modificar")
+	public void updateEmpresa(@Valid Empresa empresa) {
 		Optional<Empresa> empresaActual = empresaRepositorio.findById(empresa.getId());
 		if (empresaActual.isPresent()) {
 			empresaRepositorio.save(empresa);

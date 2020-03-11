@@ -6,14 +6,8 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import ar.com.facturacion.dominio.Pie;
 import ar.com.facturacion.repositorio.PieRepositorio;
@@ -25,7 +19,7 @@ public class PieRest {
 	@Autowired
 	private PieRepositorio pieRepositorio;
 	
-	@GetMapping
+	@GetMapping("/todos")
 	public List<Pie> getPies(){
 		return pieRepositorio.findAll();
 	}
@@ -36,21 +30,26 @@ public class PieRest {
 		return pie.get();
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/eliminar/{id}")
+	@ResponseStatus(HttpStatus.GONE)
 	public void removePie(@PathVariable Long id) {
 		Optional<Pie> pie = pieRepositorio.findById(id);
-		pieRepositorio.delete(pie.get());
+		if(pie.isPresent()){
+			pieRepositorio.delete(pie.get());
+		}
 	}
 	
-	@PostMapping
-	public void createPie(@Valid @RequestBody Pie pie) {
+	@PostMapping("/crear")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void createPie(@Valid Pie pie) {
 		if (pie.getId() == null) {
 			pieRepositorio.save(pie);
 		}
 	}
 	
-	@PutMapping
-	public void updatePie(@Valid @RequestBody Pie pie) {
+	@PutMapping("/modificar")
+	@ResponseStatus(HttpStatus.OK)
+	public void updatePie(@Valid Pie pie) {
 		Optional<Pie> pieActual = pieRepositorio.findById(pie.getId());
 		if(pieActual.isPresent()) {
 			pieRepositorio.save(pie);

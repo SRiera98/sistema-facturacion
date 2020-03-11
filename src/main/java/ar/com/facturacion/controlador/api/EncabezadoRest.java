@@ -6,14 +6,8 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import ar.com.facturacion.dominio.Encabezado;
 import ar.com.facturacion.repositorio.EncabezadoRepositorio;
@@ -36,21 +30,27 @@ public class EncabezadoRest {
 		return encabezado.get();
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/eliminar/{id}")
+	@ResponseStatus(HttpStatus.GONE)
 	public void removeEncabezado(@PathVariable Long id) {
 		Optional<Encabezado> encabezado = encabezadoRepositorio.findById(id);
-		encabezadoRepositorio.delete(encabezado.get());
+		if(encabezado.isPresent()){
+		encabezado.get().setAnulado(false);
+		encabezadoRepositorio.save(encabezado.get());
+		}
 	}
 	
-	@PostMapping
-	public void createEncabezado(@Valid @RequestBody Encabezado encabezado) {
+	@PostMapping("/crear")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void createEncabezado(@Valid Encabezado encabezado) {
 		if (encabezado.getId() == null) {
 			encabezadoRepositorio.save(encabezado);
 		}
 	}
 	
-	@PutMapping
-	public void updateEncabezado(@Valid @RequestBody Encabezado encabezado) {
+	@PutMapping("/modificar")
+	@ResponseStatus(HttpStatus.OK)
+	public void updateEncabezado(@Valid Encabezado encabezado) {
 		Optional<Encabezado> encabezadoActual = encabezadoRepositorio.findById(encabezado.getId());
 		if(encabezadoActual.isPresent()) {
 			encabezadoRepositorio.save(encabezado);
