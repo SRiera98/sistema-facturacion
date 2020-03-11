@@ -8,16 +8,13 @@ import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import ar.com.facturacion.dominio.Producto;
 import ar.com.facturacion.repositorio.ProductoRepositorio;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -50,7 +47,7 @@ public class ProductoControl {
 
 
     @GetMapping(value = "/registrar")
-    public String agregarProducto(@Valid Producto producto,Errors errors, Model model) {
+    public String agregarProducto(Errors errors, Model model) {
         model.addAttribute("producto", new Producto());
         model.addAttribute("titulo","Registro Producto");
         model.addAttribute("action","/producto/registrar");
@@ -63,15 +60,12 @@ public class ProductoControl {
             return "productos/form_prod";
         }
 
-        model.addAttribute("productoInfo",producto);
-
         if(producto.getId()==null){
             repository.save(producto);
         }
         redirectAttributes.addFlashAttribute("mensaje","¡Producto Registrado Correctamente!");
         return "redirect:/producto/index";
     }
-
 
     @GetMapping(value = "/eliminar/{id}")
     public String eliminarProducto(@PathVariable Long id,RedirectAttributes redirectAttributes){

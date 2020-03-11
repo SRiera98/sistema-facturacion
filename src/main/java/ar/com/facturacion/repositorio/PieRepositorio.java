@@ -5,9 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import ar.com.facturacion.dominio.Pie;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface PieRepositorio extends JpaRepository<Pie, Long>{
     Pie findByEncabezadoContaining(Encabezado encabezado);
 

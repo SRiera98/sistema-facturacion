@@ -17,8 +17,6 @@ import ar.com.facturacion.dominio.Producto;
 public class FacturacionServicio {
 
 
-	public void facturar(Cliente cliente, List<Producto> productos) {
-	}
 	public static BigDecimal calcularTotal(List<Item> items){
 		BigDecimal total=new BigDecimal(0);
 		for (Item i: items) {

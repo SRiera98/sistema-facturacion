@@ -35,6 +35,11 @@ public class ClienteControl {
             dataPage = repository.findByVisibilidad(PageRequest.of(page.get() - 1, size.get()));
         }
         int totalPages = dataPage.getTotalPages();
+        /*Verificamos que la Cant de Paginas sea positiva, ya que al parsear el IntStream a la List<Integer
+          como minimo va a haber una pagina.
+          Si esto se cumple primero creamos un rango de numeros Enteros que recorrer con IntStream.
+          Luego gracias el metodo boxed() parseamos el IntStream a un Stream de Integers (Stream<Integer>)
+          Permitiendo finalmente parsear a una List<Integer> con collect*/
         if (totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
@@ -45,7 +50,7 @@ public class ClienteControl {
     }
 
     @GetMapping(value = "/registrar")
-    public String agregarCliente(@Valid Cliente cliente,Errors errors, Model model) {
+    public String agregarCliente(Errors errors, Model model) {
         model.addAttribute("cliente", new Cliente());
         model.addAttribute("action","/cliente/registrar");
         return "clientes/form_cliente";
@@ -53,12 +58,9 @@ public class ClienteControl {
 
     @PostMapping(value = "/registrar")
     public String guardarCliente(@Valid Cliente cliente, Errors errors, Model model, RedirectAttributes redirectAttributes) {
-        model.addAttribute("registrar",true);
         if(errors.hasErrors()){
             return "clientes/form_cliente";
         }
-
-        model.addAttribute("clienteInfo",cliente);
         redirectAttributes.addFlashAttribute("mensaje","¡Cliente Registrado Correctamente!");
         if(cliente.getId()==null){
             repository.save(cliente);
@@ -69,7 +71,7 @@ public class ClienteControl {
     @GetMapping(value = "/eliminar/{id}")
     public String eliminarCliente(@PathVariable Long id,RedirectAttributes redirectAttributes){
         Cliente cliente= repository.findById(id).get();
-        cliente.setVisibilidad((false));
+        cliente.setVisibilidad(false);
         repository.save(cliente);
         redirectAttributes.addFlashAttribute("mensaje","¡Cliente Eliminado Correctamente!");
         return "redirect:/cliente/indexcliente";

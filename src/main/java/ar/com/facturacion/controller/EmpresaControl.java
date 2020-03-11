@@ -48,7 +48,7 @@ public class EmpresaControl {
 
 
     @GetMapping(value = "/registrar")
-    public String agregarEmpresa(@Valid Empresa empresa,Errors errors, Model model) {
+    public String agregarEmpresa(Model model) {
         model.addAttribute("empresa", new Empresa());
         return "empresas/registro_empresa";
     }

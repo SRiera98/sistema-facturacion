@@ -16,10 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/factura")
@@ -33,14 +30,12 @@ public class ItemControl {
 
     @GetMapping(value = "/agregarproductos/{id}")
     public String indicarProductos(Model model, @PathVariable Long id){
-        List<Producto> listaproductos=null;
+        List<Producto> listaproductos;
         listaproductos=productorepository.findByEstado();
 
         model.addAttribute("titulo", "Selección de Productos");
         model.addAttribute("productos",listaproductos);
-
         model.addAttribute("item", new Item());
-
 
         return "facturas/seleccion_productos";
     }

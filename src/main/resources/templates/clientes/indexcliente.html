@@ -74,20 +74,19 @@
                 <ul class="pagination justify-content-center">
 
                     <th:block th:if="${data.hasPrevious()}">
-                        <li class="page-item"><a class="page-link"
-                                                 th:href="@{/cliente/indexcliente(size=${data.size},page=${data.number})}"
-                                                 href="#"> <span aria-hidden="true">&laquo;</span> Anterior
-                        </a></li>
+                        <li class="page-item">
+                            <a class="page-link" th:href="@{/cliente/indexcliente(size=${data.size},page=${data.number})}"
+                                                 href="#"> <span aria-hidden="true">&laquo;</span> Anterior</a></li>
                     </th:block>
 
                     <th:block th:each="pageNumber : ${pageNumbers}">
                         <li th:if="${data.number+1 == pageNumber}"
                             class="page-item active"><span class="page-link"
-                                                           th:text=${pageNumber}>#</span></li>
+                                                           th:text=${pageNumber}>#</span></li> <!-- en el th:if evaluamos si coincide con el N° de Pag actual, e imprimimos el texto-->
                         <li th:unless="${data.number+1 == pageNumber}"
                             class="page-item"><a class="page-link"
                                                  th:href="@{/cliente/indexcliente(size=${data.size}, page=${pageNumber})}"
-                                                 th:text=${pageNumber} href="#">1</a></li>
+                                                 th:text=${pageNumber} href="#">1</a></li> <!-- en el th:unless es el negativo del th:if, por lo tanto, si no coinciden se muestra el enlace a esa pag.-->
                     </th:block>
 
                     </th:block>

@@ -13,6 +13,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -23,12 +25,10 @@ public class EncabezadoControl {
     @Autowired
     private ClienteRepositorio clienterepository;
     @Autowired
-    private ProductoRepositorio productorepository;
-    @Autowired
     private EncabezadoRepositorio encabezadorepository;
 
     @GetMapping("/crear")
-    public String creacionFactura(Encabezado encabezado,Errors errors,Model model ) {
+    public String creacionFactura(Model model) {
         List<Cliente> clientes;
         clientes=clienterepository.findByVisibilidad();
         model.addAttribute("titulo", "Listado de Clientes");
@@ -39,10 +39,9 @@ public class EncabezadoControl {
     }
 
     @PostMapping(value = "/crear")
-    public String guardarFactura(Encabezado encabezado,Model model) {
+    public String guardarFactura(Encabezado encabezado, Model model) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis()); //Instanciamos fecha actual para el encabezado de factura.
         encabezado.setFecha(timestamp);
-        model.addAttribute("facturaInfo",encabezado);
 
         if(encabezado.getId()==null){
             encabezadorepository.save(encabezado);

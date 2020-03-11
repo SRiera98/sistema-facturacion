@@ -24,10 +24,12 @@ public class Factura {
 	public void setPie(Pie pie) {
 		this.pie = pie;
 	}
+
 	@Override
 	public String toString() {
 		return "Factura [encabezado=" + encabezado + ", items=" + items + ", pie=" + pie + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -37,6 +39,7 @@ public class Factura {
 		result = prime * result + ((pie == null) ? 0 : pie.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

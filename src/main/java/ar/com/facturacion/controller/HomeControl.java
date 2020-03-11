@@ -8,7 +8,7 @@ public class HomeControl {
 
     @GetMapping(value = "/")
     private String inicio(){
-        return "index/main.html";
+        return "index/main";
     }
 
 }
