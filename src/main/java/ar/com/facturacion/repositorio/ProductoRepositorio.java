@@ -1,6 +1,7 @@
 package ar.com.facturacion.repositorio;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +13,9 @@ import ar.com.facturacion.dominio.Producto;
 @Repository
 public interface ProductoRepositorio extends JpaRepository<Producto, Long>{
 	List<Producto> findByCodigoContainingOrNombreContaining(String codigo, String nombre);
+
+	Optional<Producto> findByCodigo(String codigo);
+
 	@Query(value = "SELECT * FROM facturacion.productos where estado=1",nativeQuery = true)
 	Page<Producto> findByEstado(Pageable pageable);
 

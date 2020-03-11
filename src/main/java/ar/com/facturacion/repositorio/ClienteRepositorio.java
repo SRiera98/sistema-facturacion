@@ -9,10 +9,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface ClienteRepositorio extends JpaRepository<Cliente, Long>{
 	Cliente findByNombreContaining(String nombre);
-
+	Optional<Cliente> findByCodigo(String codigo);
 	@Query(value = "SELECT * FROM facturacion.clientes where visibilidad=1",nativeQuery = true)
 	Page<Cliente> findByVisibilidad(Pageable pageable);
 

@@ -47,7 +47,7 @@ public class ProductoControl {
 
 
     @GetMapping(value = "/registrar")
-    public String agregarProducto(Errors errors, Model model) {
+    public String agregarProducto(Producto producto,Errors errors, Model model) {
         model.addAttribute("producto", new Producto());
         model.addAttribute("titulo","Registro Producto");
         model.addAttribute("action","/producto/registrar");
@@ -60,10 +60,17 @@ public class ProductoControl {
             return "productos/form_prod";
         }
 
-        if(producto.getId()==null){
-            repository.save(producto);
+
+        Optional <Producto> optionalProducto= repository.findByCodigo(producto.getCodigo());
+        if(!optionalProducto.isPresent()){
+            if(producto.getId()==null){
+                repository.save(producto);
+            }
+            redirectAttributes.addFlashAttribute("mensaje","¡Producto Registrado Correctamente!");
+        }else{
+            redirectAttributes.addFlashAttribute("mensaje","¡Producto Ya Existe!");
         }
-        redirectAttributes.addFlashAttribute("mensaje","¡Producto Registrado Correctamente!");
+
         return "redirect:/producto/index";
     }
 

@@ -1,16 +1,7 @@
 <!DOCTYPE html>
 <html th:lang="es" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title th:text="${titulo}">titulo</title>
-</head>
+<head th:include="fragments/header.html :: head"></head>
+<title th:text="${titulo}">titulo</title>
 <body>
 <header th:replace="fragments/header.html :: header"></header>
 <div class="container">
@@ -19,7 +10,7 @@
         <br/>
         <h2>Introduzca los datos de la Factura</h2>
         <hr/>
-        <div class="row" th:class="${#fields.hasErrors('cliente')} ? 'form-group row has-danger' : (*{cliente == null} ? 'form-group row' : 'form-group row has-success')">
+        <div class="form-group row">
             <div class="col-md-3">
                 <h3>Cliente</h3>
             </div>
@@ -34,7 +25,7 @@
             <div class="col-md-3"></div>
         </div>
 
-        <div class="row" th:class="${#fields.hasErrors('numero')} ? 'form-group row has-danger' : (*{numero == null} ? 'form-group row' : 'form-group row has-success')">
+        <div class="form-group row">
             <div class="col-md-3">
                 <h3>Numero Factura</h3>
             </div>
@@ -47,7 +38,7 @@
             <div class="col-md-3"></div>
         </div>
 
-        <div class="row" th:class="${#fields.hasErrors('letra')} ? 'form-group row has-danger' : (*{letra == null} ? 'form-group row' : 'form-group row has-success')">
+        <div class="form-group row">
             <div class="col-md-3">
                 <h3>Categoria Factura</h3>
             </div>

@@ -50,7 +50,7 @@ public class ClienteControl {
     }
 
     @GetMapping(value = "/registrar")
-    public String agregarCliente(Errors errors, Model model) {
+    public String agregarCliente(Cliente cliente,Errors errors, Model model) {
         model.addAttribute("cliente", new Cliente());
         model.addAttribute("action","/cliente/registrar");
         return "clientes/form_cliente";
@@ -61,9 +61,14 @@ public class ClienteControl {
         if(errors.hasErrors()){
             return "clientes/form_cliente";
         }
-        redirectAttributes.addFlashAttribute("mensaje","¡Cliente Registrado Correctamente!");
-        if(cliente.getId()==null){
-            repository.save(cliente);
+        Optional <Cliente> optionalCliente= repository.findByCodigo(cliente.getCodigo());
+        if(!optionalCliente.isPresent()){
+            if(cliente.getId()==null){
+                repository.save(cliente);
+            }
+            redirectAttributes.addFlashAttribute("mensaje","¡Cliente Registrado Correctamente!");
+        }else{
+            redirectAttributes.addFlashAttribute("mensaje","¡Cliente Ya Existe!");
         }
         return "redirect:/cliente/indexcliente";
     }

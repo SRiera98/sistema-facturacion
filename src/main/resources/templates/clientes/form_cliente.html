@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html th:lang="es" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-</head>
+<head th:include="fragments/header.html :: head"></head>
 <body>
 <header th:replace="fragments/header.html :: header"></header>
 <div class="container">
@@ -19,7 +9,7 @@
         <br/>
         <h2>Introduzca los datos del Cliente</h2>
         <hr/>
-        <div th:class="${#fields.hasErrors('codigo')} ? 'form-group row has-danger' : (*{codigo == null} ? 'form-group row' : 'form-group row has-success')">
+        <div class="form-group row">
             <label class="col-sm-2 col-form-label">Codigo</label>
             <div class="col-sm-6">
                 <div class="input-group">
@@ -29,7 +19,7 @@
             </div>
         </div>
 
-        <div th:class="${#fields.hasErrors('nombre')} ? 'form-group row has-danger' : (*{nombre == null} ? 'form-group row' : 'form-group row has-success')">
+        <div class="form-group row">
             <label class="col-sm-2 col-form-label">Nombre</label>
             <div class="col-sm-6">
                 <div class="input-group">
@@ -39,7 +29,7 @@
             </div>
         </div>
 
-        <div th:class="${#fields.hasErrors('direccion')} ? 'form-group row has-danger' : (*{direccion == null} ? 'form-group row' : 'form-group row has-success')">
+        <div class="form-group row">
             <label class="col-sm-2 col-form-label">Direccion</label>
             <div class="col-sm-6">
                 <div class="input-group">
@@ -49,7 +39,7 @@
             </div>
         </div>
 
-        <div th:class="${#fields.hasErrors('cuit')} ? 'form-group row has-danger' : (*{cuit == null} ? 'form-group row' : 'form-group row has-success')">
+        <div class="form-group row">
             <label class="col-sm-2 col-form-label">Cuit</label>
             <div class="col-sm-6">
                 <div class="input-group">
@@ -59,7 +49,7 @@
             </div>
         </div>
 
-        <div th:class="${#fields.hasErrors('categoria')} ? 'form-group row has-danger' : (*{categoria == null} ? 'form-group row' : 'form-group row has-success')">
+        <div class="form-group row">
             <label class="col-sm-2 col-form-label">Categoria</label>
             <div class="col-sm-6">
                 <select class="form-control form-control-lg" th:field="*{categoria}" >
