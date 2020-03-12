@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -30,9 +29,9 @@ public class ClienteControl {
     public String index_cliente(Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
         Page<Cliente> dataPage;
         if (!page.isPresent() && !size.isPresent()){
-            dataPage = repository.findByVisibilidad(PageRequest.of(currentPage - 1, pageSize));
+            dataPage = repository.findByVisibilidad(PageRequest.of(currentPage - 1, pageSize),true);
         }else{
-            dataPage = repository.findByVisibilidad(PageRequest.of(page.get() - 1, size.get()));
+            dataPage = repository.findByVisibilidad(PageRequest.of(page.get() - 1, size.get()),true);
         }
         int totalPages = dataPage.getTotalPages();
         /*Verificamos que la Cant de Paginas sea positiva, ya que al parsear el IntStream a la List<Integer

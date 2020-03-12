@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface EncabezadoRepositorio extends JpaRepository<Encabezado, Long>{
     Optional<Encabezado> findByNumero(String numero);
-    @Query(value = "SELECT * FROM facturacion.facturas_encabezado where anulado=0 order by fecha desc",nativeQuery = true)
-    List<Encabezado> findByAnulado();
+
+    List<Encabezado> findByAnuladoOrderByFechaDesc(Boolean anulado);
 
 }

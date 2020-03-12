@@ -2,7 +2,6 @@ package ar.com.facturacion.dominio;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -22,7 +21,7 @@ public class Pie implements Serializable {
     private static final long serialVersionUID = 1056979907920574376L;
     @Id
     private Long id;
-    @MapsId
+    @MapsId     //Permite indicar que la clave primaria de esta parte de la relacion, corresponde con la clave primaria del otro lado de la relacion OneToOne (encabezado_id).
     @OneToOne
     @JoinColumn(name = "facturas_encabezado_id")
     private Encabezado encabezado;

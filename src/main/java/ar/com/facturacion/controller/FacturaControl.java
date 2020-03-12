@@ -31,7 +31,7 @@ public class FacturaControl {
     public String misFacturas(Model model){
         List<Factura> facturas=new LinkedList<Factura>();
         Factura factura=new Factura();
-        List<Encabezado> encabezados=encabezadorepository.findByAnulado();
+        List<Encabezado> encabezados=encabezadorepository.findByAnuladoOrderByFechaDesc(false);
         for (Encabezado i:encabezados) {
             List<Item> items=itemrepository.findByIdEncabezado(i.getId());
             factura.setEncabezado(i);

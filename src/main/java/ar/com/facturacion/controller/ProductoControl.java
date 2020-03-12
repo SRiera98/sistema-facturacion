@@ -31,9 +31,9 @@ public class ProductoControl {
 	public String index(Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
         Page<Producto> dataPage;
         if (!page.isPresent() && !size.isPresent()){
-            dataPage = repository.findByEstado(PageRequest.of(currentPage - 1, pageSize));
+            dataPage = repository.findByEstado(PageRequest.of(currentPage - 1, pageSize),true);
         }else{
-            dataPage = repository.findByEstado(PageRequest.of(page.get() - 1, size.get()));
+            dataPage = repository.findByEstado(PageRequest.of(page.get() - 1, size.get()),true);
         }
 		int totalPages = dataPage.getTotalPages();
 		if (totalPages > 0) {

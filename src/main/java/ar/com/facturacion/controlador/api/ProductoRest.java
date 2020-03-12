@@ -28,7 +28,7 @@ public class ProductoRest {
 
 	@GetMapping("/visibles")
 	public List<Producto> getProductosVisibles(){
-		return productoRepositorio.findByEstado();
+		return productoRepositorio.findByEstado(true);
 	}
 
 	@GetMapping("/{id}")

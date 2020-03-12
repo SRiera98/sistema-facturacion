@@ -13,11 +13,9 @@ import java.util.Optional;
 
 @Repository
 public interface ClienteRepositorio extends JpaRepository<Cliente, Long>{
-	Cliente findByNombreContaining(String nombre);
 	Optional<Cliente> findByCodigo(String codigo);
-	@Query(value = "SELECT * FROM facturacion.clientes where visibilidad=1",nativeQuery = true)
-	Page<Cliente> findByVisibilidad(Pageable pageable);
 
-	@Query(value = "SELECT * FROM facturacion.clientes where visibilidad=1",nativeQuery = true)
-	List<Cliente> findByVisibilidad();
+	Page<Cliente> findByVisibilidad(Pageable pageable,Boolean visibilidad);
+
+	List<Cliente> findByVisibilidad(Boolean visibilidad);
 }

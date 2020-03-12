@@ -13,7 +13,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
 import lombok.EqualsAndHashCode;
 
 
@@ -28,8 +27,8 @@ public class Encabezado implements Serializable {
     private static final long serialVersionUID = -3479505724865821556L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
+
     @NotNull
     private Timestamp fecha;
     @NotNull

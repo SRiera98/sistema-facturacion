@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import ar.com.facturacion.dominio.Producto;
@@ -16,10 +15,8 @@ public interface ProductoRepositorio extends JpaRepository<Producto, Long>{
 
 	Optional<Producto> findByCodigo(String codigo);
 
-	@Query(value = "SELECT * FROM facturacion.productos where estado=1",nativeQuery = true)
-	Page<Producto> findByEstado(Pageable pageable);
+	Page<Producto> findByEstado(Pageable pageable,Boolean estado);
 
-	@Query(value = "SELECT * FROM facturacion.productos where estado=1",nativeQuery = true)
-	List<Producto> findByEstado();
+	List<Producto> findByEstado(Boolean estado);
 
 }

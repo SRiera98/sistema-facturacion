@@ -67,8 +67,4 @@ public class EmpresaControl {
         return "empresas/empresaregistrada";
     }
 
-
-
-
-
 }

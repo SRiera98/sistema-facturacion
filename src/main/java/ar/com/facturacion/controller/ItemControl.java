@@ -31,7 +31,7 @@ public class ItemControl {
     @GetMapping(value = "/agregarproductos/{id}")
     public String indicarProductos(Model model, @PathVariable Long id){
         List<Producto> listaproductos;
-        listaproductos=productorepository.findByEstado();
+        listaproductos=productorepository.findByEstado(true);
 
         model.addAttribute("titulo", "Selección de Productos");
         model.addAttribute("productos",listaproductos);
